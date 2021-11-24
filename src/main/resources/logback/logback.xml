@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+1. 如果配置文件发生改变, 那么将会重新加载配置文件
+2. 检查配置文件是否发生修改的时间间隔
+3. 打印日志内部的信息, 而不是只包含业务的信息
+-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!-- 定义常量 -->
+    <!-- TRACE<DEBUG<INFO<WARN<ERROR: 每个级别输出的信息都有所区别, 低等级的信息无法被高等级输出 -->
+    <!-- 通常选择 DEBUG 级别的日志信息 -->
+    <property name="log.level" value="debug"/>
+    <!-- 日志保存的时间 -->
+    <property name="log.maxHistory" value="30"/>
+    <!-- 日志存储的地址 -->
+    <property name="log.filePath" value="${catalina.base}/logs/webapps"/>
+    <!-- 日志时间格式化: SSS 是毫秒, 后面三个参数没看明白-->
+    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}-%msg%n"/>
+
+    <!-- 指定日志输出的地址 -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 相较于 layout 更加强大: 负责格式化日志数据, 还负责将日志存储在文件中 -->
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+    <!-- DEBUG 设置: 滚动, 就是随着数据的增多, 不断向文件中追加日志 -->
+    <appender name="debugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 -->
+        <file>${log.filePath}/debug.log</file>
+        <!-- 基于时间的滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <!-- 不是 DEBUG 级别的日志就直接抛弃, 是的就记录来下来 -->
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- INFO -->
+    <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径: 这个文件写满之后, 会分裂新的文件继续从而扩大容量继续存储-->
+        <file>${log.filePath}/info.log</file>
+        <!-- 基于时间的滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <!-- 不是 DEBUG 级别的日志就直接抛弃, 是的就记录来下来 -->
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- ERROR -->
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径: 这个文件写满之后, 会分裂新的文件继续从而扩大容量继续存储-->
+        <file>${log.filePath}/error.log</file>
+        <!-- 基于时间的滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <!-- 不是 DEBUG 级别的日志就直接抛弃, 是的就记录来下来 -->
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!-- Logger: 关注哪些包下的日志信息, 记录哪个层级的信息, 将 root 中的 appender 添加到 logger 中 -->
+    <logger name="com.o2o" level="${log.level}" additivity="true">
+        <appender-ref ref="debugAppender"/>
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+    <!-- 特殊的 Logger 对象, 如果前面的 Logger 对象没有指定 level, 那么就按照 root 的 level 输出 -->
+    <root level="info">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+</configuration>

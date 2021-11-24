@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.o2o.dao.CampusAreaMapper">
+
+    <select id="findAllCampusArea" resultType="campusArea">
+        select * from `o2o`.`tb_campusarea`
+        order by `campusarea_priority` desc
+    </select>
+</mapper>
