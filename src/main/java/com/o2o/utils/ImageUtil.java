@@ -10,6 +10,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,6 +34,8 @@ public class ImageUtil
     private final static Random RANDOM = new Random();
 
     /**
+     * <h3>这个方法实际并不会使用, 因为这里实际上会在转换的过程中产生一个新的文件</h3>
+     * <h3>图片上传过多就会产生非常多的垃圾文件</h3>
      * <p>1. Service 层单元测试的时候无法直接提供 CommonsMultipartFile</p>
      * <p>2. 而只能够提供 File 类来进行单元测试, 但是前端传递的是 CommonsMultipartFile</p>
      * <p>3. 虽然 File 不能够向 CommonsMultipartFile 转换, 但是反过来却是很容易的</p>
@@ -40,6 +43,7 @@ public class ImageUtil
      * @param cmf Spring 提供的传输图片文件的工具类
      * @return CommonsMultipartFile 转换生成的文件类
      */
+    @Deprecated
     public static File transferToFile(CommonsMultipartFile cmf){
         File file = new File(Objects.requireNonNull(cmf.getOriginalFilename()));
         try {
@@ -56,15 +60,16 @@ public class ImageUtil
      * <p>获取用户上传的图片流, 然后将其存储在目录中, 并且返回存储图片的相对路径</p>
      * <p>图片的相对路径是需要存储在数据库中, 所以需要返回</p>
      * <p>不返回绝对路径的原因是因为程序的可移植性</p>
-     * @param file Spring 提供的传输图片文件的工具类
+     * @param file 图片的流对象
+     * @param fileName 图片的原始文件名称
      * @param target 保存图片的用户专属的目录地址
      * @return 返回图片存储的地址以及图片名
      */
-    public static String generateThumbnailator(File file, String target){
+    public static String generateThumbnailator(InputStream file, String fileName, String target){
         // 1. 赋予用户上传的图片随机的名称（有些图床采用了哈希化的方式重命名）
         String filename = generateFileName();
         // 2. 获取用户上传的图片的扩展名
-        String extension = getFileExtension(file);
+        String extension = getFileExtension(fileName);
         // 3. 判断存储图片的目标路径是否存在相应的用户文件夹, 如果没有就需要创建
         makeImageDirectory(target);
         // 4. 存储图片的相对路径
@@ -75,6 +80,7 @@ public class ImageUtil
         logger.debug("绝对路径:\t" + destination);
         // 6. 图片存储在绝对路径定位的目录下
         try {
+            // 7. 直接使用流对象也是可以
             Thumbnails.of(file)
                     .size(200, 200)
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("D:\\图片\\watermark.png")), 0.25f)
@@ -108,8 +114,7 @@ public class ImageUtil
     /**
      * 获取文件扩展名
      */
-    private static String getFileExtension(File file) {
-        String filename = file.getName();
+    private static String getFileExtension(String filename) {
         // 避免因为各种原因导致传入的文件流为空
         logger.debug("文件名:\t" + filename);
         return filename.substring(filename.lastIndexOf("."));

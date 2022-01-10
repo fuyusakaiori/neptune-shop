@@ -21,18 +21,6 @@ public class ShopCategory
     {
     }
 
-    public ShopCategory(Integer shopCategoryId, Integer parentCategoryId, String categoryName, Integer priority, String description, String imageURL, Date createTime, Date updateTime)
-    {
-        this.shopCategoryId = shopCategoryId;
-        this.parentCategoryId = parentCategoryId;
-        this.categoryName = categoryName;
-        this.priority = priority;
-        this.description = description;
-        this.imageURL = imageURL;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
-
     public Integer getShopCategoryId()
     {
         return shopCategoryId;

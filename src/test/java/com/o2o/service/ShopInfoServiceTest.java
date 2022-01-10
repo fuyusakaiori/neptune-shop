@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class ShopInfoServiceTest extends BaseTest
 {
@@ -17,10 +19,11 @@ public class ShopInfoServiceTest extends BaseTest
     private ShopInfoService shopInfoService;
 
     @Test
-    public void insertShopInfo(){
+    public void insertShopInfo() throws FileNotFoundException
+    {
         ShopInfo shop = TestUtils.getShopInstance();
         File image = TestUtils.getImageFile();
-        ShopMessage message = shopInfoService.insertShopInfo(shop, image);
+        ShopMessage message = shopInfoService.insertShopInfo(shop, new FileInputStream(image), image.getName());
         Assert.assertEquals(ShopState.SUCCESS.getState(), message.getState());
     }
 }
