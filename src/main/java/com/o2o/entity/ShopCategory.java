@@ -8,7 +8,7 @@ import java.util.Date;
 public class ShopCategory
 {
     private Integer shopCategoryId;
-    // 父类标识符
+    // 父类标识符: 顶级类型的父类标识符为空, 子类型才有父类标识符
     private Integer parentCategoryId;
     private String categoryName;
     private Integer priority;

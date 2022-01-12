@@ -2,6 +2,9 @@ package com.o2o.dao;
 
 import com.o2o.entity.ShopInfo;
 
+/**
+ * <h2>店铺信息</h2>
+ */
 public interface ShopInfoMapper
 {
     /**

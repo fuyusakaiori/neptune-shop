@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.o2o.dao.ShopCategoryMapper">
+    
+    <!-- 字段名和属性名存在不一致的情况, 并且无法使用驼峰转换 -->
+    <resultMap id="categoryMap" type="shopCategory">
+        <result column="shop_category_parent_id" property="parentCategoryId"/>
+        <result column="shop_category_priority" property="priority"/>
+        <result column="shop_category_desc" property="description"/>
+        <result column="shop_img_url" property="imageURL"/>
+        <result column="shop_category_name" property="categoryName"/>
+    </resultMap>
+    <!--查询所有的店铺类型 -->
+    <select id="findAllShopCategory" resultType="shopCategory" resultMap="categoryMap">
+        select shop_category_id, shop_category_name, shop_category_desc, shop_category_priority, create_time, update_time, shop_category_parent_id from o2o.tb_shop_category
+        <where>
+            <if test="category != null">
+                <!-- 传入的如果是父类型, 那么就会查出来所有子类型 -->
+                and shop_category_parent_id is not null
+                <if test="category.parentCategoryId != null">
+                    <!-- 如果传入的是子类型, 那么就会查出来属于同一类型的其余类型 -->
+                    and shop_category_parent_id = #{category.parentCategoryId}
+                </if>
+            </if>
+
+        </where>
+        order by shop_category_priority desc
+    </select>
+
+</mapper>

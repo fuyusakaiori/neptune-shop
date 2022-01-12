@@ -2,11 +2,14 @@ package com.o2o.controller.master;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.o2o.dto.ShopMessage;
+import com.o2o.entity.CampusArea;
+import com.o2o.entity.ShopCategory;
 import com.o2o.entity.ShopInfo;
 import com.o2o.entity.UserInfo;
-import com.o2o.exception.ShopException;
+import com.o2o.service.CampusAreaService;
+import com.o2o.service.ShopCategoryService;
 import com.o2o.service.ShopInfoService;
-import com.o2o.utils.ImageUtil;
+import com.o2o.utils.CodeUtil;
 import com.o2o.utils.RequestUtil;
 import com.o2o.utils.enums.ShopState;
 import org.slf4j.Logger;
@@ -19,13 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,8 +43,38 @@ public class ShopInfoManagementController
 {
     @Autowired
     ShopInfoService shopInfoService;
+    // 注: 需要获取店铺类型和区域的信息, 所以需要相应的对象
+    @Autowired
+    ShopCategoryService shopCategoryService;
+    @Autowired
+    CampusAreaService campusAreaService;
 
     private static final Logger logger = LoggerFactory.getLogger(ShopInfoManagementController.class);
+
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getShopInfo(){
+        Map<String, Object> map = new HashMap<>();
+        List<ShopCategory> categoryList = null;
+        List<CampusArea> areaList = null;
+        // 注: 防止调用方法的过程中出现异常, 所以使用 try-catch 块
+        try {
+            categoryList = shopCategoryService.findAllShopCategory(new ShopCategory());
+            // TODO 测试代码
+            categoryList.forEach(category -> logger.debug(category.toString()));
+
+            areaList = campusAreaService.findAllCampusArea();
+            // TODO 这里有可能抛出异常吗?
+            map.put("categoryList", categoryList);
+            map.put("areaList", areaList);
+            map.put("success", true);
+        }
+        catch (Exception e) {
+            map.put("success", false);
+            map.put("message", e.getMessage());
+        }
+        return map;
+    }
 
     /**
      * <p>负责接收前端发送的店铺信息的表单, 并提取表单中的信息, 然后进行存储</p>
@@ -61,6 +94,11 @@ public class ShopInfoManagementController
     public Map<String, Object> insertShopInfo(HttpServletRequest request){
         // 0. 返回信息
         Map<String, Object> map = new HashMap<>();
+        // 判断验证码是否填写正确
+        if (!CodeUtil.checkVerifyCode(request)){
+            map.put("success", true);
+            map.put("message", "验证码输入错误!");
+        }
         // 1. 根据键值对手动提取请求中存储的数据, 前端传递的数据采用 JSON 格式
         // TODO 前端传递的值对应的键必须是这个名字, 否则之后会取不出来
         String json = RequestUtil.getParameterByString(request, "shopinfo");
