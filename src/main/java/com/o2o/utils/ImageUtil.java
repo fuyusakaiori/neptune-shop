@@ -1,6 +1,5 @@
 package com.o2o.utils;
 
-import net.coobird.thumbnailator.Thumbnailator;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
@@ -83,7 +81,7 @@ public class ImageUtil
             // 7. 直接使用流对象也是可以
             Thumbnails.of(file)
                     .size(200, 200)
-                    .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("D:\\图片\\watermark.png")), 0.25f)
+                    .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("D:\\图片\\水印.jpg")), 0.25f)
                     .outputQuality(0.8)
                     .toFile(destination);
         }
@@ -130,6 +128,31 @@ public class ImageUtil
 
 
     /**
+     * <p>删除此前的图片文件或者相应的文件夹</p>
+     * <p>1. 可以采用循环的方式依次删除目录中的文件</p>
+     * <p>2. 或者使用 Files 工具类提供的方法就不需要循环了, 但是需要编写匿名内部类</p>
+     * @param path 文件路径或者文件夹路径
+     */
+    public static boolean deleteImagePath(String path){
+        // 0. 如果传入的路径是空, 那么就不做任何操作
+        if (path == null) return false;
+        // 1. 如果不为空, 就判断这个文件或者文件夹是否存在
+        File fileOrDirectory = new File(PathUtil.getImageBasePath() + path);
+        // 2. 如果存在那么就判断是文件还是目录
+        if (fileOrDirectory.exists()){
+            if (fileOrDirectory.isDirectory()){
+                // 3. 删除目录中的所有文件
+                for (File file : Objects.requireNonNull(fileOrDirectory.listFiles())) {
+                    if (!file.delete()) return false;
+                }
+            }
+            // 4. 删除目录
+            return fileOrDirectory.delete();
+        }
+        return false;
+    }
+
+    /**
      * 测试 Thumbnailator 工具类
      */
     public static void main(String[] args) throws IOException
@@ -147,7 +170,6 @@ public class ImageUtil
                 .outputQuality(0.8).toFile("D:\\图片\\添加了水印的图片.png");
         // TODO 等待解决的问题: 读取水印的路径使用相对路径存在问题, 水印的位置也存在一点问题
         logger.debug(System.getProperty("os.name"));
-
     }
 
 }

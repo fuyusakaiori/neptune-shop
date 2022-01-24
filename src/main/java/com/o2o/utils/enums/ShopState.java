@@ -1,7 +1,5 @@
 package com.o2o.utils.enums;
 
-import org.springframework.http.HttpStatus;
-
 /**
  * <h2>封装操作店铺的行为产生的各种状态信息</h2>
  */

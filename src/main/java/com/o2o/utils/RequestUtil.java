@@ -44,6 +44,6 @@ public class RequestUtil
         }
     }
 
-    // TODO 其余类型的数据使用较少, 暂且不提供
+    // 其余类型的数据使用较少, 暂且不提供
 
 }

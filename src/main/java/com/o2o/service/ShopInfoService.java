@@ -2,8 +2,8 @@ package com.o2o.service;
 
 import com.o2o.dto.ShopMessage;
 import com.o2o.entity.ShopInfo;
+import com.o2o.exception.ShopException;
 
-import java.io.File;
 import java.io.InputStream;
 
 public interface ShopInfoService
@@ -17,6 +17,29 @@ public interface ShopInfoService
      * @return 店铺是否操作成功的所有相关信息
      */
     ShopMessage insertShopInfo(ShopInfo shop, InputStream image, String fileName);
+
+    /**
+     * <p>根据店铺编号获取店铺信息</p>
+     * @param id 店铺编号
+     * @return 店铺信息
+     */
+    ShopMessage findShopInfoById(int id);
+
+    /**
+     * <p>更新店铺信息</p>
+     */
+    ShopMessage updateShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException;
+
+    /**
+     * TODO 前后端的分页有什么区别吗?
+     * <h3>根据传入条件查询店铺信息</h3>
+     * <p>注: 前端只能够传入页号, 而没有办法传入行号, 所以需要对应的转换工具</p>
+     * @param condition 传入条件
+     * @param pageIndex 页号
+     * @param pageSize 页大小
+     * @return 店铺信息的集合
+     */
+    ShopMessage findShopInfo(ShopInfo condition, int pageIndex, int pageSize);
 
 
 }

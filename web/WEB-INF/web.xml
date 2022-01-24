@@ -33,15 +33,15 @@
         <!-- 配置验证码的各种信息 -->
         <init-param>
             <param-name>kaptcha.border</param-name>
-            <param-value>yes</param-value>
+            <param-value>no</param-value>
         </init-param>
         <init-param>
             <param-name>kaptcha.image.width</param-name>
-            <param-value>400</param-value>
+            <param-value>380</param-value>
         </init-param>
         <init-param>
             <param-name>kaptcha.image.height</param-name>
-            <param-value>40</param-value>
+            <param-value>60</param-value>
         </init-param>
         <init-param>
             <param-name>kaptcha.textproducer.font.color</param-name>

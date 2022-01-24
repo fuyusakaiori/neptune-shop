@@ -49,11 +49,11 @@ public class ShopMessage
         this.count = 1;
     }
 
-    public ShopMessage(ShopState shopState, List<ShopInfo> shops){
+    public ShopMessage(ShopState shopState, List<ShopInfo> shops, int count){
         this.state = shopState.getState();
         this.info = shopState.getInfo();
         this.shops = shops;
-        this.count = shops.size();
+        this.count = count;
     }
 
     public ShopInfo getShop()
@@ -66,8 +66,7 @@ public class ShopMessage
         return shops;
     }
 
-    public int getState()
-    {
+    public int getState() {
         return state;
     }
 
@@ -80,4 +79,6 @@ public class ShopMessage
     {
         return count;
     }
+
+
 }

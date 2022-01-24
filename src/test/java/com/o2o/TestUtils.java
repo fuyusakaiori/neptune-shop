@@ -22,7 +22,7 @@ public class TestUtils
         // 1. 创建插入对象
         ShopInfo shop = new ShopInfo();
         // 2. 设置相关数据
-        shop.setShopName("test case");
+        shop.setShopName("测试用例~");
         shop.setCreateTime(new Date());
         shop.setUpdateTime(new Date());
         UserInfo master = new UserInfo();

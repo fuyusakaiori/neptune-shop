@@ -51,6 +51,43 @@ public class ShopInfoManagementController
 
     private static final Logger logger = LoggerFactory.getLogger(ShopInfoManagementController.class);
 
+    /**
+     * <h3>1. 我们从店铺信息首页跳转到对应的店铺管理页面的时候, 就会在 URL 中携带店铺编号</h3>
+     * <h3>2. 然后我们就会通过 JS 将店铺编号填充在跳转编辑页面的 URL 地址中</h3>
+     * <h3>2.1 因为跳转编辑页面显然是需要提前知道, 编辑的是哪个店铺的信息</h3>
+     * <h3>2.2 所以显然我们是需要将店铺编号从 URL 中获取到的</h3>
+     * <h3>3. 理论上是可以不要这个方法, 但是某些情况下, 可能是没有传入店铺编号的</h3>
+     * <h3>3.1 那么这个时候就需要考虑从 Session 中获取了</h3
+     * <h3>3.2 如果获取不到, 那么访问显然是有问题的， 如果获取到了, 就可以正常访问</h3>>
+     */
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> validAuthority(HttpServletRequest request){
+        Map<String, Object> map = new HashMap<>();
+        // 如果编号为空, 那么返回的编号会被处理成 -1
+        int id = RequestUtil.getParameterByInt(request, "id");
+        if (id <= 0){
+            // 考虑从 Session 中获取店铺信息
+            Object object = request.getSession().getAttribute("shop");
+            if (object == null){
+                // 如果 Session 中没有任何可以访问的店铺信息, 那么就是没有权限访问的
+                map.put("redirect", true);
+                map.put("url", "/o2o/shop-admin/list");
+            }else{
+                ShopInfo shop = (ShopInfo) object;
+                map.put("redirect", false);
+                map.put("id", shop.getShopId());
+            }
+        }else{
+            ShopInfo shop = new ShopInfo();
+            shop.setShopId(id);
+            request.getSession().setAttribute("shop", shop);
+            map.put("redirect", false);
+            map.put("id", id);
+        }
+        return map;
+    }
+
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getShopInfo(){
@@ -100,9 +137,10 @@ public class ShopInfoManagementController
             map.put("message", "验证码输入错误!");
         }
         // 1. 根据键值对手动提取请求中存储的数据, 前端传递的数据采用 JSON 格式
-        // TODO 前端传递的值对应的键必须是这个名字, 否则之后会取不出来
+        // 注: 前端传递的值对应的键必须是这个名字, 否则之后会取不出来
         String json = RequestUtil.getParameterByString(request, "shopinfo");
         // 2. 利用 Jackson 工具类将 JSON 字符串转换成对应的 POJO 实体类
+        // 注: JSON 字符串中每个属性名字必须和实体类中的名字完全相同
         ObjectMapper mapper = new ObjectMapper();
         ShopInfo shop;
         try {
@@ -135,21 +173,23 @@ public class ShopInfoManagementController
             // TODO 4.1 通过 Session 获取店铺对应的老板
             UserInfo master = new UserInfo();
             // 4.2 店铺设置老板
+            master.setUserId(1);
             shop.setMaster(master);
             // 4.3 新增店铺
             ShopMessage message = null;
             try {
                 message = shopInfoService.insertShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
+                // 4.4 根据返回信息进行处理
+                if (message.getState() == ShopState.SUCCESS.getState()){
+                    map.put("success", true);
+                }else{
+                    map.put("success", false);
+                    map.put("message", message.getInfo());
+                }
             }
             catch (IOException e) {
-                e.printStackTrace();
-            }
-            // 4.4 根据返回信息进行处理
-            if (message.getState() == ShopState.SUCCESS.getState()){
-                map.put("success", true);
-            }else{
                 map.put("success", false);
-                map.put("message", message.getInfo());
+                map.put("message", e.getMessage());
             }
             return map;
         }else{
@@ -158,6 +198,122 @@ public class ShopInfoManagementController
             return map;
         }
 
+    }
+
+    /**
+     * <p>根据店铺 ID 查询店铺信息</p>
+     */
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> findShopInfoById(HttpServletRequest request){
+        Map<String, Object> map = new HashMap<>();
+        int id = RequestUtil.getParameterByInt(request, "id");
+        logger.debug("店铺 ID: {}", id);
+        try {
+            if (id > 0){
+                ShopMessage message = shopInfoService.findShopInfoById(id);
+                List<CampusArea> areas = campusAreaService.findAllCampusArea();
+                map.put("success", true);
+                map.put("shop", message.getShop());
+                map.put("areas", areas);
+            }else{
+                map.put("success", false);
+                map.put("message", "店铺 ID 不存在!");
+            }
+        }
+        catch (Exception e) {
+            map.put("success", false);
+            map.put("message", e.getMessage());
+        }
+
+        return map;
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> findShopInfo(HttpServletRequest request){
+        Map<String, Object> map = new HashMap<>();
+        // TODO 由于缺少用户登录、搜索框、分页等前端模块，所以这里直接设置条件并返回查询结果
+        ShopInfo condition = new ShopInfo();
+        UserInfo master = new UserInfo();
+        master.setUserId(1);
+        master.setUsername("测试用户");
+        condition.setMaster(master);
+        try {
+            ShopMessage message = shopInfoService.findShopInfo(condition, 1, 10);
+            if (message.getState() == ShopState.SUCCESS.getState()){
+                map.put("success", true);
+                map.put("shops", message.getShops());
+                map.put("user", master);
+            }else{
+                map.put("success", false);
+                map.put("message", "店铺信息获取失败!");
+            }
+        }
+        catch (Exception e) {
+            map.put("success", false);
+            map.put("message", e.getMessage());
+        }
+        return map;
+    }
+
+    /**
+     * <p>更新店铺信息</p>
+     * <p>注: 和新增店铺的流程基本一致</p>
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> updateShopInfo(HttpServletRequest request){
+        Map<String, Object> map = new HashMap<>();
+        if (!CodeUtil.checkVerifyCode(request)){
+            map.put("success", false);
+            map.put("message", "验证码填写错误!");
+            return map;
+        }
+        String json = RequestUtil.getParameterByString(request, "shopinfo");
+        ObjectMapper mapper = new ObjectMapper();
+        ShopInfo shop;
+        try {
+            shop = mapper.readValue(json, ShopInfo.class);
+        }
+        catch (IOException e) {
+            map.put("success", false);
+            map.put("message", e.getMessage());
+            return map;
+        }
+
+        CommonsMultipartFile cmf = null;
+        CommonsMultipartResolver cmr = new CommonsMultipartResolver(
+                request.getSession().getServletContext());
+        if (cmr.isMultipart(request)){
+            MultipartHttpServletRequest mhsr = (MultipartHttpServletRequest) request;
+            cmf = (CommonsMultipartFile) mhsr.getFile("shopimage");
+        }
+        // 注: 更新的时候可以不更新图片
+        if (shop != null && shop.getShopId() > 0){
+            ShopMessage message;
+            try {
+                if (cmf == null){
+                    message = shopInfoService.updateShopInfo(shop, null, null);
+                }else{
+                    message = shopInfoService.updateShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
+                }
+                if (message.getState() == ShopState.SUCCESS.getState()){
+                    map.put("success", true);
+                    // TODO 用户注册功能完成之后需要添加 Session
+                }else{
+                    map.put("success", false);
+                    map.put("message", "更新失败");
+                }
+            }
+            catch (IOException e) {
+                map.put("success", false);
+                map.put("message", e.getMessage());
+                return map;
+            }
+        }
+
+        return map;
     }
 
     /**

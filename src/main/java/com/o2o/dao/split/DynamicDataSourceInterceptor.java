@@ -59,6 +59,7 @@ public class DynamicDataSourceInterceptor implements Interceptor
         // 6. 设置访问的数据库类型 => Mybatis 配置文件中配置拦截器 => Spring 中配置对应的数据源对象
         DynamicDataSourceHolder.setDatabaseType(lookUpKey);
         return invocation.proceed();
+        
     }
 
     /**

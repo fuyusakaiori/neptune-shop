@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 public class ShopInfoMapperTest extends BaseTest
 {
@@ -54,6 +55,7 @@ public class ShopInfoMapperTest extends BaseTest
     }
 
     @Test
+    @Ignore
     public void updateShopInfoTest(){
         ShopInfo shop = new ShopInfo();
         shop.setShopId(1);
@@ -63,5 +65,30 @@ public class ShopInfoMapperTest extends BaseTest
         Assert.assertEquals(1, shopInfoMapper.updateShopInfo(shop));
     }
 
+    @Test
+    @Ignore
+    public void selectShopInfoByIdMapper(){
+        ShopInfo shop = shopInfoMapper.findShopInfoById(9);
+        System.out.println(shop);
+    }
+
+    @Test
+    public void selectShopInfoMapper(){
+        ShopInfo condition = new ShopInfo();
+        CampusArea area = new CampusArea();
+        area.setCampusAreaId(2);
+        ShopCategory category = new ShopCategory();
+        category.setShopCategoryId(4);
+        condition.setCampusArea(area);
+        condition.setShopName("店");
+        // condition.setCategory(category);
+        // condition.setStatus(1);
+        int count = shopInfoMapper.getShopInfoCount(condition);
+        System.out.printf("查询到的店铺数量: %d\n", count);
+        Assert.assertEquals(3, count);
+        List<ShopInfo> shops = shopInfoMapper.findShopInfo(condition, 0, 2);
+        shops.forEach(System.out::println);
+        Assert.assertEquals(2, shops.size());
+    }
 
 }
