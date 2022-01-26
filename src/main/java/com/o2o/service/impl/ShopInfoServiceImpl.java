@@ -1,14 +1,14 @@
 package com.o2o.service.impl;
 
 import com.o2o.dao.ShopInfoMapper;
-import com.o2o.dto.ShopMessage;
+import com.o2o.dto.Message;
 import com.o2o.entity.ShopInfo;
 import com.o2o.exception.ShopException;
 import com.o2o.service.ShopInfoService;
 import com.o2o.utils.ImageUtil;
 import com.o2o.utils.PageUtil;
 import com.o2o.utils.PathUtil;
-import com.o2o.utils.enums.ShopState;
+import com.o2o.utils.enums.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +36,15 @@ public class ShopInfoServiceImpl implements ShopInfoService
     @Override
     // 确保事务失败之后可以回滚
     @Transactional
-    public ShopMessage insertShopInfo(ShopInfo shop, InputStream image, String fileName)
+    public Message<ShopInfo> insertShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException
     {
         // 1. 店铺信息为空, 是不可以直接添加的, 返回相应的信息
         if (shop == null)
-            return new ShopMessage(ShopState.NULL_SHOP);
+            return new Message<ShopInfo>(State.NULL_SHOP);
         // TODO 店铺信息中还包含对应的店铺老板、店铺类别、店铺所在区域都是需要相应的验证的
 
         // 2. 给店铺设置默认信息
-        shop.setStatus(ShopState.CHECK.getState());
+        shop.setStatus(State.CHECK.getState());
         shop.setCreateTime(new Date());
         shop.setUpdateTime(new Date());
         // 3. 添加店铺信息
@@ -73,24 +73,24 @@ public class ShopInfoServiceImpl implements ShopInfoService
         }
 
         // 5. 店铺信息添加成功, 就可以将成功的信息返回
-        return new ShopMessage(ShopState.SUCCESS, shop);
+        return new Message<>(State.SUCCESS, shop);
     }
 
     /**
      * <p>根据店铺编号返回店铺信息</p>
      */
     @Override
-    public ShopMessage findShopInfoById(int id) {
+    public Message<ShopInfo> findShopInfoById(int id) {
         // 0. 如果传入的店铺编号是非法的, 那么返回的店铺信息也就是非法的
-        return id > 0 ? new ShopMessage(ShopState.SUCCESS, shopInfoMapper.findShopInfoById(id)):
-                       new ShopMessage(ShopState.NULL_SHOP);
+        return id > 0 ? new Message<>(State.SUCCESS, shopInfoMapper.findShopInfoById(id)):
+                       new Message<>(State.NULL_SHOP);
     }
 
     @Override
     @Transactional
-    public ShopMessage updateShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException {
+    public Message<ShopInfo> updateShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException {
         // 0. 检查传入的店铺信息是否非法: 店铺 ID 没有办法更改吧, 这个判断有必要吗?
-        if (shop == null || shop.getShopId() <= 0) return new ShopMessage(ShopState.FAILURE);
+        if (shop == null || shop.getShopId() <= 0) return new Message<>(State.FAILURE);
         // 1. 检查是否需要更新图片: 如果传入的流不等于空那就需要更新图片
         try {
             if (image != null){
@@ -100,7 +100,7 @@ public class ShopInfoServiceImpl implements ShopInfoService
                 // 1.2 如果此前已经上传过图片了, 那么就需要删除此前的图片（每个店铺只拥有一张图片）
                 if (update.getImageURL() != null){
                     if(!ImageUtil.deleteImagePath(update.getImageURL()))
-                        throw new ShopException(ShopState.FAILURE.getInfo());
+                        throw new ShopException(State.FAILURE.getInfo());
                 }
                 // 注: 插入不成功的原因: 水印的源文件被删除了
                 insertShopImage(shop, image, fileName);
@@ -109,9 +109,9 @@ public class ShopInfoServiceImpl implements ShopInfoService
             shop.setUpdateTime(new Date());
             int result = shopInfoMapper.updateShopInfo(shop);
             if (result <= 0){
-                return new ShopMessage(ShopState.FAILURE);
+                return new Message<>(State.FAILURE);
             }
-            return new ShopMessage(ShopState.SUCCESS, shop);
+            return new Message<>(State.SUCCESS, shop);
         }
         catch (Exception e) {
             throw new ShopException(e.getMessage());
@@ -119,13 +119,13 @@ public class ShopInfoServiceImpl implements ShopInfoService
     }
 
     @Override
-    public ShopMessage findShopInfo(ShopInfo condition, int pageIndex, int pageSize) {
+    public Message<ShopInfo> findShopInfo(ShopInfo condition, int pageIndex, int pageSize) {
         int start = PageUtil.pageIndexToRowIndex(pageSize, pageIndex);
         List<ShopInfo> shops = shopInfoMapper.findShopInfo(condition, start, pageSize);
         int count = shopInfoMapper.getShopInfoCount(condition);
 
-        return shops == null || shops.size() == 0 ? new ShopMessage(ShopState.NULL_SHOP):
-                       new ShopMessage(ShopState.SUCCESS, shops, count);
+        return shops == null || shops.size() == 0 ? new Message<>(State.NULL_SHOP):
+                       new Message<>(State.SUCCESS, shops, count);
     }
 
     /**

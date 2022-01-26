@@ -2,10 +2,10 @@ package com.o2o.service;
 
 import com.o2o.BaseTest;
 import com.o2o.TestUtils;
-import com.o2o.dto.ShopMessage;
+import com.o2o.dto.Message;
 import com.o2o.entity.CampusArea;
 import com.o2o.entity.ShopInfo;
-import com.o2o.utils.enums.ShopState;
+import com.o2o.utils.enums.State;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -27,8 +27,8 @@ public class ShopInfoServiceTest extends BaseTest
     {
         ShopInfo shop = TestUtils.getShopInstance();
         File image = TestUtils.getImageFile();
-        ShopMessage message = shopInfoService.insertShopInfo(shop, new FileInputStream(image), image.getName());
-        Assert.assertEquals(ShopState.SUCCESS.getState(), message.getState());
+        Message message = shopInfoService.insertShopInfo(shop, new FileInputStream(image), image.getName());
+        Assert.assertEquals(State.SUCCESS.getState(), message.getState());
     }
 
     @Test
@@ -36,8 +36,8 @@ public class ShopInfoServiceTest extends BaseTest
         ShopInfo shop = new ShopInfo();
         shop.setShopId(11);
         File image = new File("D:\\图片\\涩图\\1629107036280.jpg");
-        ShopMessage message = shopInfoService.updateShopInfo(shop, new FileInputStream(image), "1629107036280.jpg");
-        Assert.assertEquals(message.getInfo(), ShopState.SUCCESS.getInfo());
+        Message message = shopInfoService.updateShopInfo(shop, new FileInputStream(image), "1629107036280.jpg");
+        Assert.assertEquals(message.getInfo(), State.SUCCESS.getInfo());
     }
 
     @Test
@@ -48,8 +48,8 @@ public class ShopInfoServiceTest extends BaseTest
         area.setCampusAreaId(2);
         condition.setCampusArea(area);
         condition.setShopName("店");
-        ShopMessage message = shopInfoService.findShopInfo(condition, 2, 2);
-        List<ShopInfo> shops = message.getShops();
+        Message message = shopInfoService.findShopInfo(condition, 2, 2);
+        List<ShopInfo> shops = message.getList();
         Assert.assertEquals(1, shops.size());
     }
 }

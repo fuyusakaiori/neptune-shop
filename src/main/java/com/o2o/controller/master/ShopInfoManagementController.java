@@ -1,7 +1,7 @@
 package com.o2o.controller.master;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.o2o.dto.ShopMessage;
+import com.o2o.dto.Message;
 import com.o2o.entity.CampusArea;
 import com.o2o.entity.ShopCategory;
 import com.o2o.entity.ShopInfo;
@@ -11,7 +11,7 @@ import com.o2o.service.ShopCategoryService;
 import com.o2o.service.ShopInfoService;
 import com.o2o.utils.CodeUtil;
 import com.o2o.utils.RequestUtil;
-import com.o2o.utils.enums.ShopState;
+import com.o2o.utils.enums.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +88,7 @@ public class ShopInfoManagementController
         return map;
     }
 
-    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop-info/init", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getShopInfo(){
         Map<String, Object> map = new HashMap<>();
@@ -126,7 +126,7 @@ public class ShopInfoManagementController
      * @param request 客户端发送的请求
      * @return JSON 格式的哈希表
      */
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop-info/insert", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> insertShopInfo(HttpServletRequest request){
         // 0. 返回信息
@@ -176,11 +176,11 @@ public class ShopInfoManagementController
             master.setUserId(1);
             shop.setMaster(master);
             // 4.3 新增店铺
-            ShopMessage message = null;
+            Message<ShopInfo> message = null;
             try {
                 message = shopInfoService.insertShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
                 // 4.4 根据返回信息进行处理
-                if (message.getState() == ShopState.SUCCESS.getState()){
+                if (message.getState() == State.SUCCESS.getState()){
                     map.put("success", true);
                 }else{
                     map.put("success", false);
@@ -203,7 +203,7 @@ public class ShopInfoManagementController
     /**
      * <p>根据店铺 ID 查询店铺信息</p>
      */
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop-info/find", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> findShopInfoById(HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
@@ -211,10 +211,10 @@ public class ShopInfoManagementController
         logger.debug("店铺 ID: {}", id);
         try {
             if (id > 0){
-                ShopMessage message = shopInfoService.findShopInfoById(id);
+                Message<ShopInfo> message = shopInfoService.findShopInfoById(id);
                 List<CampusArea> areas = campusAreaService.findAllCampusArea();
                 map.put("success", true);
-                map.put("shop", message.getShop());
+                map.put("shop", message.getElement());
                 map.put("areas", areas);
             }else{
                 map.put("success", false);
@@ -229,7 +229,7 @@ public class ShopInfoManagementController
         return map;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop-info/list", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> findShopInfo(HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
@@ -240,10 +240,10 @@ public class ShopInfoManagementController
         master.setUsername("测试用户");
         condition.setMaster(master);
         try {
-            ShopMessage message = shopInfoService.findShopInfo(condition, 1, 10);
-            if (message.getState() == ShopState.SUCCESS.getState()){
+            Message<ShopInfo> message = shopInfoService.findShopInfo(condition, 1, 10);
+            if (message.getState() == State.SUCCESS.getState()){
                 map.put("success", true);
-                map.put("shops", message.getShops());
+                map.put("shops", message.getList());
                 map.put("user", master);
             }else{
                 map.put("success", false);
@@ -261,7 +261,7 @@ public class ShopInfoManagementController
      * <p>更新店铺信息</p>
      * <p>注: 和新增店铺的流程基本一致</p>
      */
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop-info/update", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> updateShopInfo(HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
@@ -291,14 +291,14 @@ public class ShopInfoManagementController
         }
         // 注: 更新的时候可以不更新图片
         if (shop != null && shop.getShopId() > 0){
-            ShopMessage message;
+            Message<ShopInfo> message;
             try {
                 if (cmf == null){
                     message = shopInfoService.updateShopInfo(shop, null, null);
                 }else{
                     message = shopInfoService.updateShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
                 }
-                if (message.getState() == ShopState.SUCCESS.getState()){
+                if (message.getState() == State.SUCCESS.getState()){
                     map.put("success", true);
                     // TODO 用户注册功能完成之后需要添加 Session
                 }else{

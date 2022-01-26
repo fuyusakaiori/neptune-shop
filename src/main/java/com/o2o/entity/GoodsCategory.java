@@ -8,24 +8,17 @@ import java.util.Date;
 public class GoodsCategory
 {
     private Integer goodsCategoryId;
+    private GoodsCategory goodsCategoryParent;
     private String goodsCategoryName;
     private Integer priority;
-    // 商品归属的店铺
-    private ShopInfo shop;
+    // 商品归属的店铺: 商品类别中只需要记录店铺编号就可以了, 没有必要记录店铺的所有信息
+    private Integer shopId;
     // TODO 每种商品只能顾存在单个商店里吗?
     private Date createTime;
+    // 每个商品类型是不可以更新的
 
     public GoodsCategory()
     {
-    }
-
-    public GoodsCategory(Integer goodsCategoryId, String goodsCategoryName, Integer priority, ShopInfo shop, Date createTime)
-    {
-        this.goodsCategoryId = goodsCategoryId;
-        this.goodsCategoryName = goodsCategoryName;
-        this.priority = priority;
-        this.shop = shop;
-        this.createTime = createTime;
     }
 
     public Integer getGoodsCategoryId()
@@ -36,6 +29,15 @@ public class GoodsCategory
     public void setGoodsCategoryId(Integer goodsCategoryId)
     {
         this.goodsCategoryId = goodsCategoryId;
+    }
+
+    public GoodsCategory getGoodsCategoryParent()
+    {
+        return goodsCategoryParent;
+    }
+
+    public void setGoodsCategoryParent(GoodsCategory goodsCategoryParent) {
+        this.goodsCategoryParent = goodsCategoryParent;
     }
 
     public String getGoodsCategoryName()
@@ -58,14 +60,14 @@ public class GoodsCategory
         this.priority = priority;
     }
 
-    public ShopInfo getShop()
+    public Integer getShopId()
     {
-        return shop;
+        return shopId;
     }
 
-    public void setShop(ShopInfo shop)
+    public void setShopId(Integer shopId)
     {
-        this.shop = shop;
+        this.shopId = shopId;
     }
 
     public Date getCreateTime()
@@ -76,5 +78,29 @@ public class GoodsCategory
     public void setCreateTime(Date createTime)
     {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "GoodsCategory{" +
+                       "goodsCategoryId=" + goodsCategoryId +
+                       ", goodsCategoryParent=" + goodsCategoryParent +
+                       ", goodsCategoryName='" + goodsCategoryName + '\'' +
+                       ", priority=" + priority +
+                       ", shopId=" + shopId +
+                       ", createTime=" + createTime +
+                       '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return this.goodsCategoryId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        GoodsCategory other = (GoodsCategory) obj;
+        return this.goodsCategoryId.equals(other.goodsCategoryId);
     }
 }

@@ -4,7 +4,7 @@
 
 $(function (){
     $.ajax({
-        url: '/o2o/shop-management/list',
+        url: '/o2o/shop-management/shop-info/list',
         type: 'GET',
         dataType: 'json',
         success: function (data){

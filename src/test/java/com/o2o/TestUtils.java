@@ -1,12 +1,12 @@
 package com.o2o;
 
-import com.o2o.entity.CampusArea;
-import com.o2o.entity.ShopCategory;
-import com.o2o.entity.ShopInfo;
-import com.o2o.entity.UserInfo;
+import com.o2o.entity.*;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <h2>测试工具类</h2>
@@ -44,5 +44,15 @@ public class TestUtils
      */
     public static File getImageFile(){
         return new File("D:\\图片\\涩图\\1637216699245.jpg");
+    }
+
+    public static List<GoodsCategory> getGoodsCategory(){
+        List<GoodsCategory> categories = new ArrayList<>();
+        GoodsCategory first = new GoodsCategory();
+        first.setGoodsCategoryName("景品");
+        first.setPriority(2);
+        first.setShopId(11);
+        Collections.addAll(categories, first);
+        return categories;
     }
 }

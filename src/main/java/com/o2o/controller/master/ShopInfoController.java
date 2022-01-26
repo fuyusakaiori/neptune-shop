@@ -33,4 +33,9 @@ public class ShopInfoController
     public String shopListPage(){
         return "shop/list";
     }
+
+    @RequestMapping(value = "/goods-category")
+    public String goodsCategoryPage(){
+        return "shop/goods-category";
+    }
 }
