@@ -1,5 +1,6 @@
 package com.o2o.utils;
 
+import com.o2o.dto.ImageWrapper;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
@@ -9,7 +10,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -63,11 +63,11 @@ public class ImageUtil
      * @param target 保存图片的用户专属的目录地址
      * @return 返回图片存储的地址以及图片名
      */
-    public static String generateThumbnailator(InputStream file, String fileName, String target){
+    public static String generateThumbnailator(ImageWrapper wrapper, String target){
         // 1. 赋予用户上传的图片随机的名称（有些图床采用了哈希化的方式重命名）
         String filename = generateFileName();
         // 2. 获取用户上传的图片的扩展名
-        String extension = getFileExtension(fileName);
+        String extension = getFileExtension(wrapper.getFilename());
         // 3. 判断存储图片的目标路径是否存在相应的用户文件夹, 如果没有就需要创建
         makeImageDirectory(target);
         // 4. 存储图片的相对路径
@@ -79,7 +79,7 @@ public class ImageUtil
         // 6. 图片存储在绝对路径定位的目录下
         try {
             // 7. 直接使用流对象也是可以
-            Thumbnails.of(file)
+            Thumbnails.of(wrapper.getImage())
                     .size(200, 200)
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("D:\\图片\\水印.jpg")), 0.25f)
                     .outputQuality(0.8)
@@ -126,7 +126,6 @@ public class ImageUtil
         return RANDOM.nextInt(10000) + SDF.format(new Date());
     }
 
-
     /**
      * <p>删除此前的图片文件或者相应的文件夹</p>
      * <p>1. 可以采用循环的方式依次删除目录中的文件</p>
@@ -151,6 +150,7 @@ public class ImageUtil
         }
         return false;
     }
+
 
     /**
      * 测试 Thumbnailator 工具类

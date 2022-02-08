@@ -94,8 +94,13 @@
                     <!-- 模糊查询不能够使用 #{}, 只能够使用 ${} -->
                     and shop_name like '%${condition.shopName}%'
                 </if>
-                <if test="condition.category != null and condition.category.shopCategoryId != null">
-                    and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                <if test="condition.category != null">
+                    <if test="condition.category.shopCategoryId != null">
+                        and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                    </if>
+                    <if test="condition.category.parentCategoryId != null">
+                        and o2o.tb_shop_category.shop_category_parent_id = #{condition.category.parentCategoryId}
+                    </if>
                 </if>
                 <if test="condition.status != null">
                     and status = #{condition.status}
@@ -123,8 +128,13 @@
                 <if test="condition.shopName != null">
                     and shop_name like '%${condition.shopName}%'
                 </if>
-                <if test="condition.category != null and condition.category.shopCategoryId != null">
-                    and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                <if test="condition.category != null">
+                    <if test="condition.category.shopCategoryId != null">
+                        and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                    </if>
+                    <if test="condition.category.parentCategoryId != null">
+                        and o2o.tb_shop_category.shop_category_parent_id = #{condition.category.parentCategoryId}
+                    </if>
                 </if>
                 <if test="condition.status != null">
                     and status = #{condition.status}

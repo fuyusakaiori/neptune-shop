@@ -1,10 +1,9 @@
 package com.o2o.service;
 
+import com.o2o.dto.ImageWrapper;
 import com.o2o.dto.Message;
 import com.o2o.entity.ShopInfo;
 import com.o2o.exception.ShopException;
-
-import java.io.InputStream;
 
 public interface ShopInfoService
 {
@@ -16,7 +15,7 @@ public interface ShopInfoService
      * @param fileName 传入的是流对象, 无法像文件对象那样可以直接调用 API 获取名称, 只能单独传入
      * @return 店铺是否操作成功的所有相关信息
      */
-    Message<ShopInfo> insertShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException;
+    Message<ShopInfo> insertShopInfo(ShopInfo shop, ImageWrapper wrapper) throws ShopException;
 
     /**
      * <p>根据店铺编号获取店铺信息</p>
@@ -28,7 +27,7 @@ public interface ShopInfoService
     /**
      * <p>更新店铺信息</p>
      */
-    Message<ShopInfo> updateShopInfo(ShopInfo shop, InputStream image, String fileName) throws ShopException;
+    Message<ShopInfo> updateShopInfo(ShopInfo shop, ImageWrapper wrapper) throws ShopException;
 
     /**
      * TODO 前后端的分页有什么区别吗?

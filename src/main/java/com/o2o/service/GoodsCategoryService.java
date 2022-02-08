@@ -6,7 +6,7 @@ import com.o2o.exception.GoodsCategoryException;
 
 import java.util.List;
 
-public interface GoodCategoryService
+public interface GoodsCategoryService
 {
     /**
      * <h3>查询店铺拥有的所有商品类型</h3>

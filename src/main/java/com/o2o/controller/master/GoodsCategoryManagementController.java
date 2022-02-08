@@ -4,7 +4,7 @@ import com.o2o.dto.Message;
 import com.o2o.entity.GoodsCategory;
 import com.o2o.entity.ShopInfo;
 import com.o2o.exception.GoodsCategoryException;
-import com.o2o.service.GoodCategoryService;
+import com.o2o.service.GoodsCategoryService;
 import com.o2o.utils.enums.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ import java.util.*;
 public class GoodsCategoryManagementController
 {
     @Autowired
-    private GoodCategoryService goodCategoryService;
+    private GoodsCategoryService goodsCategoryService;
 
     private static final Logger logger = LoggerFactory.getLogger(GoodsCategoryManagementController.class);
 
@@ -39,7 +39,7 @@ public class GoodsCategoryManagementController
         }
         try {
             ShopInfo shop = (ShopInfo) object;
-            Message<GoodsCategory> message = goodCategoryService.findShopGoodsCategory(shop.getShopId());
+            Message<GoodsCategory> message = goodsCategoryService.findShopGoodsCategory(shop.getShopId());
             // 获取所有父类型
             Set<GoodsCategory> set = new HashSet<>();
             message.getList().forEach(category -> {set.add(category.getGoodsCategoryParent());});
@@ -86,7 +86,7 @@ public class GoodsCategoryManagementController
                     // 4. 设置每个商品类型的店铺信息
                     ShopInfo shop = (ShopInfo) obj;
                     categories.forEach(category -> category.setShopId(shop.getShopId()));
-                    Message<GoodsCategory> message = goodCategoryService.batchInsertGoodsCategory(categories);
+                    Message<GoodsCategory> message = goodsCategoryService.batchInsertGoodsCategory(categories);
                     if (message.getState() == State.SUCCESS.getState()){
                         map.put("success", true);
                     }else{
@@ -121,7 +121,7 @@ public class GoodsCategoryManagementController
         }
         try {
             ShopInfo shop = (ShopInfo) obj;
-            Message<GoodsCategory> message = goodCategoryService.deleteGoodsCategory(categoryId, shop.getShopId());
+            Message<GoodsCategory> message = goodsCategoryService.deleteGoodsCategory(categoryId, shop.getShopId());
             if (message.getState() == State.SUCCESS.getState()){
                 map.put("success", true);
             }else {

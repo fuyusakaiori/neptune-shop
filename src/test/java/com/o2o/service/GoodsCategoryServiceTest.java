@@ -16,24 +16,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GoodsCategoryServiceTest extends BaseTest
 {
     @Autowired
-    private GoodCategoryService goodCategoryService;
+    private GoodsCategoryService goodsCategoryService;
 
     @Test
     public void B_findShopCategoryServiceTest(){
-        Message<GoodsCategory> message = goodCategoryService.findShopGoodsCategory(11);
+        Message<GoodsCategory> message = goodsCategoryService.findShopGoodsCategory(11);
         message.getList().forEach(System.out::println);
         Assert.assertEquals(message.getState(), State.SUCCESS.getState());
     }
 
     @Test
     public void A_batchInsertGoodsCategoryServiceTest() throws GoodsCategoryException {
-        Message<GoodsCategory> message = goodCategoryService.batchInsertGoodsCategory(TestUtils.getGoodsCategory());
+        Message<GoodsCategory> message = goodsCategoryService.batchInsertGoodsCategory(TestUtils.getGoodsCategory());
         Assert.assertEquals(message.getState(), State.SUCCESS.getState());
     }
 
     @Test
     public void C_deleteGoodsCategoryServiceTest() throws GoodsCategoryException {
-        Message<GoodsCategory> message = goodCategoryService.deleteGoodsCategory(12, 11);
+        Message<GoodsCategory> message = goodsCategoryService.deleteGoodsCategory(12, 11);
 
         Assert.assertEquals(State.SUCCESS.getState(), message.getState());
     }

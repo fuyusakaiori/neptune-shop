@@ -10,9 +10,15 @@ import java.util.List;
  */
 public interface ShopCategoryMapper
 {
+
+    /**
+     * <h4>1. 如果传入的店铺类型为空, 那么就是查询所有的父类型</h4>
+     * @return 返回所有父类型
+     */
+    List<ShopCategory> findAllShopCategory();
+
     /**
      * <h3>查询所有的店铺类型</h3>
-     * <h4>1. 如果传入的店铺类型为空, 那么就是查询所有类型</h4>
      * <h4>2. 如果传入的店铺类型没有父类型, 那么就等同于查询所有店铺子类型</h4>
      * <h4>3. 如果传入的店铺类型有父类型, 那么就等同于查询该父类型下的所有子类型</h4>
      * @param category 父类型
@@ -20,9 +26,4 @@ public interface ShopCategoryMapper
      */
     List<ShopCategory> findAllShopCategory(@Param("category") ShopCategory category);
 
-    /**
-     * <h3>查询所有店铺类型: 不需要任何条件</h3>
-     * @return 所有店铺类型
-     */
-    List<ShopCategory> findAllShopCategory();
 }

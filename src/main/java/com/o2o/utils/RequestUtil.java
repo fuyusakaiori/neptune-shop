@@ -44,6 +44,17 @@ public class RequestUtil
         }
     }
 
+
+    public static boolean getParameterByBoolean(HttpServletRequest request, String key){
+        try {
+            return Boolean.parseBoolean(request.getParameter(key));
+        }
+        catch (Exception e) {
+            logger.debug(e.getMessage());
+            return false;
+        }
+    }
+
     // 其余类型的数据使用较少, 暂且不提供
 
 }

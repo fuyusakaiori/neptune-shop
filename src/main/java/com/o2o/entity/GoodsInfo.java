@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class GoodsInfo
 {
-    private Integer goodsInfoId;
+    private Integer goodsId;
     private String goodsName;
     private String description;
     private String imageURL;
@@ -33,31 +33,15 @@ public class GoodsInfo
     {
     }
 
-    public GoodsInfo(Integer goodsInfoId, String goodsName, String description, String imageURL, Double normalPrice, Double promotionPrice, Integer priority, Date createTime, Date updateTime, Integer status, List<GoodsImage> images, GoodsCategory category, ShopInfo shopInfo)
+
+    public Integer getGoodsId()
     {
-        this.goodsInfoId = goodsInfoId;
-        this.goodsName = goodsName;
-        this.description = description;
-        this.imageURL = imageURL;
-        this.normalPrice = normalPrice;
-        this.promotionPrice = promotionPrice;
-        this.priority = priority;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.status = status;
-        this.images = images;
-        this.category = category;
-        this.shopInfo = shopInfo;
+        return goodsId;
     }
 
-    public Integer getGoodsInfoId()
+    public void setGoodsId(Integer goodsId)
     {
-        return goodsInfoId;
-    }
-
-    public void setGoodsInfoId(Integer goodsInfoId)
-    {
-        this.goodsInfoId = goodsInfoId;
+        this.goodsId = goodsId;
     }
 
     public String getGoodsName()
@@ -184,7 +168,7 @@ public class GoodsInfo
     public String toString()
     {
         return "GoodsInfo{" +
-                       "goodsInfoId=" + goodsInfoId +
+                       "goodsId=" + goodsId +
                        ", goodsName='" + goodsName + '\'' +
                        ", description='" + description + '\'' +
                        ", imageURL='" + imageURL + '\'' +

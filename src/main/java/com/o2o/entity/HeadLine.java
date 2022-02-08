@@ -17,22 +17,8 @@ public class HeadLine
     // 状态: 0 表示禁用 1 表示启用
     private Integer status;
     private Date createTime;
+    private Date updateTime;
 
-
-    public HeadLine()
-    {
-    }
-
-    public HeadLine(Integer headlineId, String headlineName, Integer priority, String link, String imageURL, Integer status, Date createTime)
-    {
-        this.headlineId = headlineId;
-        this.headlineName = headlineName;
-        this.priority = priority;
-        this.link = link;
-        this.imageURL = imageURL;
-        this.status = status;
-        this.createTime = createTime;
-    }
 
     public Integer getHeadlineId()
     {
@@ -102,5 +88,30 @@ public class HeadLine
     public void setCreateTime(Date createTime)
     {
         this.createTime = createTime;
+    }
+
+    public Date getUpdateTime()
+    {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime)
+    {
+        this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "HeadLine{" +
+                       "headlineId=" + headlineId +
+                       ", headlineName='" + headlineName + '\'' +
+                       ", priority=" + priority +
+                       ", link='" + link + '\'' +
+                       ", imageURL='" + imageURL + '\'' +
+                       ", status=" + status +
+                       ", createTime=" + createTime +
+                       ", updateTime=" + updateTime +
+                       '}';
     }
 }

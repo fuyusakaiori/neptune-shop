@@ -25,11 +25,13 @@ $(function () {
                     set.add(parent);
                 })
                 categories.map(function (category, index) {
-                    categoriesHTML += '<tr><td>' + (index + 1) + '</td>'
-                        + '<td>' + category.goodsCategoryName + '</td>'
-                        + '<td>' + category.priority + '</td>'
-                        + '<td>' + category.goodsCategoryParent.goodsCategoryName +'</td>'
-                        + '<td><a href="#" class="btn btn-link first" data-id="'+ category.goodsCategoryId + '">删除</a>'
+                    categoriesHTML += '<div class="row row-product-category now">'
+                        + '<div class="col-20">' + (index + 1) + '</div>'
+                        + '<div class="col-20 product-category-name">' + category.goodsCategoryName + '</div>'
+                        + '<div class="col-20">' + category.priority + '</div>'
+                        + '<div class="col-20">' + category.goodsCategoryParent.goodsCategoryName + '</div>'
+                        + '<div class="col-20"><a href="#" class="button first" data-id="' + category.goodsCategoryId + '">删除</a></div>'
+                        + '</div>';
                 });
                 $('#category-body').html(categoriesHTML);
             }else{
@@ -41,11 +43,12 @@ $(function () {
     // 每次点击新增按钮都会新增一个空白行
     $('#new').click(function () {
         let newHTML = $('#category-body').html();
-        newHTML += '<tr id="temp"><td>' + (++rows) + '</td>'
-            + '<td><input type="text" id="category-name" class="form-control"></td>'
-            + '<td><input type="number" id="priority" class="form-control"></td>'
-            + '<td><select class="form-control" id="parent">' + findAllParentCategory(set) + '</select></td>'
-            + '<td><a href="#" class="btn btn-link second">删除</a></td>'
+        newHTML += '<div class="row row-product-category temp"><div class="col-20">' + (++rows) + '</div>'
+            + '<div class="col-20"><input class="category-input category" id="category-name" type="text" placeholder="分类名"></div>'
+            + '<div class="col-20"><input class="category-input priority" id="priority" type="number" placeholder="优先级"></div>'
+            + '<div class="col-20"><select id="parent">' + findAllParentCategory(set) + '</select></div>'
+            + '<div class="col-20"><a href="#" class="button second">删除</a></div>'
+            + '</div>';
         $('#category-body').html(newHTML);
     });
 
@@ -90,7 +93,7 @@ $(function () {
         $(this).parent().parent().remove();
     });
 
-    // 删除已经添加的商品类型信息
+    // TODO 暂时还存在问题 删除已经添加的商品类型信息
     $('#category-body').on('click', '.first', function (e) {
         let target = e.currentTarget;
         $.ajax({

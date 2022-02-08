@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.o2o.dao.GoodsInfoMapper">
+
+    <resultMap id="goodsMap" type="goodsInfo">
+        <id property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="description" column="goods_desc"/>
+        <result property="imageURL" column="goods_image_url"/>
+        <result property="normalPrice" column="goods_normal_price"/>
+        <result property="promotionPrice" column="goods_promotion_price"/>
+        <result property="priority" column="goods_priority"/>
+        <result property="status" column="status"/>
+        <association property="category" column="good_category_id" javaType="goodsCategory">
+            <id property="goodsCategoryId" column="goods_category_id"/>
+            <result property="goodsCategoryName" column="goods_category_name"/>
+        </association>
+        <association property="shopInfo" column="goods_shop_id">
+            <id property="shopId" column="shop_id"/>
+            <result property="shopName" column="shop_name"/>
+        </association>
+        <!-- 一对多: 关联键存在多的那张表里 -->
+        <collection property="images" ofType="goodsImage">
+            <id property="goodsImageId" column="goods_image_id"/>
+            <result property="url" column="url"/>
+            <result property="description" column="goods_image_desc"/>
+            <result property="priority" column="good_image_priority"/>
+        </collection>
+    </resultMap>
+
+    <insert id="insertGoodsInfo" useGeneratedKeys="true" parameterType="goodsInfo"
+            keyProperty="goodsId" keyColumn="goods_id">
+        insert into o2o.tb_goods_info
+        (goods_name, goods_desc, goods_image_url, goods_priority, create_time, 
+         update_time, goods_category_id, goods_shop_id,
+         status, goods_normal_price, goods_promotion_price)
+        values
+        (#{goodsName}, #{description}, #{imageURL}, #{priority}, #{createTime},
+         #{updateTime}, #{category.goodsCategoryId}, #{shopInfo.shopId},
+         #{status}, #{normalPrice}, #{promotionPrice})
+    </insert>
+
+    <update id="updateGoodsInfo" parameterType="goodsInfo">
+        update o2o.tb_goods_info
+        <set>
+            <!-- 记得加逗号 -->
+            <if test="goodsName != null"> goods_name = #{goodsName},</if>
+            <if test="description != null">goods_desc = #{description},</if>
+            <if test="imageURL != null">goods_image_url = #{imageURL},</if>
+            <if test="normalPrice != null">goods_normal_price = #{normalPrice},</if>
+            <if test="promotionPrice != null">goods_promotion_price = #{promotionPrice},</if>
+            <if test="priority != null">goods_priority = #{priority},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="category != null and category.goodsCategoryId != null">goods_category_id = #{category.goodsCategoryId},</if>
+        </set>
+        <where>
+            <!--不允许更新商品所属店铺信息 -->
+            goods_id = #{goodsId} and goods_shop_id = #{shopInfo.shopId}
+        </where>
+    </update>
+
+    <select id="findGoodsInfoById" parameterType="_int" resultMap="goodsMap" resultType="goodsInfo">
+        <!-- 字段名不要取得相同 -->
+        select tginfo.*, tgimage.goods_image_id, tgimage.goods_image_url as url, tgimage.goods_image_desc, tgimage.goods_image_priority,
+               tgc.goods_category_id, tgc.goods_category_name, tsi.shop_id, tsi.shop_name
+        from o2o.tb_goods_info as tginfo
+        left join o2o.tb_goods_image as tgimage
+        on tginfo.goods_id = tgimage.goods_id
+        left join o2o.tb_goods_category as tgc
+        on tginfo.goods_category_id = tgc.goods_category_id
+        inner join o2o.tb_shop_info as tsi
+        on tginfo.goods_shop_id = tsi.shop_id
+        where tginfo.goods_id = #{id}
+    </select>
+
+    <select id="findAllGoodsInfo" resultType="goodsInfo" resultMap="goodsMap">
+        select tginfo.*, tgc.goods_category_id, tgc.goods_category_name, tsi.shop_id, tsi.shop_name
+        from o2o.tb_goods_info as tginfo
+        left join o2o.tb_goods_category as tgc
+        on tginfo.goods_category_id = tgc.goods_category_id
+        inner join o2o.tb_shop_info as tsi
+        on tginfo.goods_shop_id = tsi.shop_id
+        <where>
+            <if test="condition != null">
+                <if test="condition.shopInfo != null">
+                    <if test="condition.shopInfo.shopId != null">
+                        and tsi.shop_id  = #{condition.shopInfo.shopId}
+                    </if>
+                    <if test="condition.shopInfo.shopName != null">
+                        and tsi.shop_name like '%${condition.shopInfo.shopName}%'
+                    </if>
+                </if>
+                <if test="condition.goodsName != null">
+                    and goods_name like '%${condition.goodsName}%'
+                </if>
+                <if test="condition.status != null">
+                    and tginfo.status = #{condition.status}
+                </if>
+                <if test="condition.category != null">
+                    <if test="condition.category.goodsCategoryId != null">
+                        and tgc.goods_category_id = #{condition.category.goodsCategoryId}
+                    </if>
+                    <if test="condition.category.goodsCategoryName != null">
+                        and tgc.goods_category_name like '%${condition.category.goodsCategoryName}%'
+                    </if>
+                </if>
+            </if>
+        </where>
+        order by tginfo.goods_priority desc
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="getGoodsInfoCount" parameterType="goodsInfo" resultType="_int">
+        select count(1) from o2o.tb_goods_info as tginfo
+        left join o2o.tb_goods_category as tgc
+        on tginfo.goods_category_id = tgc.goods_category_id
+        inner join o2o.tb_shop_info as tsi
+        on tginfo.goods_shop_id = tsi.shop_id
+        <where>
+            <if test="condition != null">
+                <if test="condition.shopInfo != null">
+                    <if test="condition.shopInfo.shopId != null">
+                        and tsi.shop_id  = #{condition.shopInfo.shopId}
+                    </if>
+                    <if test="condition.shopInfo.shopName != null">
+                        and tsi.shop_name like '%${condition.shopInfo.shopName}%'
+                    </if>
+                </if>
+                <if test="condition.goodsName != null">
+                    and goods_name like '%${condition.goodsName}%'
+                </if>
+                <if test="condition.status != null">
+                    and tginfo.status = #{condition.status}
+                </if>
+                <if test="condition.category != null">
+                    <if test="condition.category.goodsCategoryId != null">
+                        and tgc.goods_category_id = #{condition.category.goodsCategoryId}
+                    </if>
+                    <if test="condition.category.goodsCategoryName != null">
+                        and tgc.goods_category_name like '%${condition.category.goodsCategoryName}%'
+                    </if>
+                </if>
+            </if>
+        </where>
+    </select>
+
+</mapper>

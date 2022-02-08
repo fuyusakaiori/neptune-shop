@@ -73,22 +73,18 @@ public class ShopInfoMapperTest extends BaseTest
     }
 
     @Test
+    @Ignore
     public void selectShopInfoMapper(){
         ShopInfo condition = new ShopInfo();
-        CampusArea area = new CampusArea();
-        area.setCampusAreaId(2);
         ShopCategory category = new ShopCategory();
-        category.setShopCategoryId(4);
-        condition.setCampusArea(area);
-        condition.setShopName("店");
-        // condition.setCategory(category);
-        // condition.setStatus(1);
+        category.setParentCategoryId(3);
+        condition.setCategory(category);
         int count = shopInfoMapper.getShopInfoCount(condition);
         System.out.printf("查询到的店铺数量: %d\n", count);
         Assert.assertEquals(3, count);
-        List<ShopInfo> shops = shopInfoMapper.findShopInfo(condition, 0, 2);
+        List<ShopInfo> shops = shopInfoMapper.findShopInfo(condition, 0, 10);
         shops.forEach(System.out::println);
-        Assert.assertEquals(2, shops.size());
+        Assert.assertEquals(3, shops.size());
     }
 
 }

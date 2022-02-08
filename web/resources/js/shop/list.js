@@ -21,12 +21,12 @@ $(function (){
     function getShopInfoList(list){
         let listHTML = '';
         list.map(function (shop, index){
-           let id = index + 1;
-           listHTML +=  '<tr><th>' + id + '</th>'
-               + '<th>' + shop.shopName + '</th>'
-               + '<th>' + getShopStatus(shop.status) + '</th>'
-               + '<th>' + getShopManagementURL(shop.status, shop.shopId) + '</th>'
-               +'</tr>'
+           listHTML +=  '<div class="row row-shop"><div class="col-20">'
+               + (index + 1) + '</div><div class="col-40">'
+               + shop.shopName + '</div><div class="col-20">'
+               + getShopStatus(shop.status) + '</div><div class="col-20">'
+               + getShopManagementURL(shop.status, shop.shopId)
+               + '</div></div>'
         });
         $('#body').html(listHTML);
     }
@@ -44,7 +44,7 @@ $(function (){
 
     function getShopManagementURL(status, id){
         if (status === 1)
-            return '<a href="/o2o/shop-admin/management?id='+ id +'">管理</a>'
+            return '<a href="/o2o/shop-admin/shop-management?id='+ id +'">管理</a>'
         else
             return '';
     }

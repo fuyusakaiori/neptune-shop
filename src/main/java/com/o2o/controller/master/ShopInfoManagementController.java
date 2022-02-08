@@ -1,6 +1,7 @@
 package com.o2o.controller.master;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.o2o.dto.ImageWrapper;
 import com.o2o.dto.Message;
 import com.o2o.entity.CampusArea;
 import com.o2o.entity.ShopCategory;
@@ -97,11 +98,7 @@ public class ShopInfoManagementController
         // 注: 防止调用方法的过程中出现异常, 所以使用 try-catch 块
         try {
             categoryList = shopCategoryService.findAllShopCategory(new ShopCategory());
-            // TODO 测试代码
-            categoryList.forEach(category -> logger.debug(category.toString()));
-
             areaList = campusAreaService.findAllCampusArea();
-            // TODO 这里有可能抛出异常吗?
             map.put("categoryList", categoryList);
             map.put("areaList", areaList);
             map.put("success", true);
@@ -178,7 +175,10 @@ public class ShopInfoManagementController
             // 4.3 新增店铺
             Message<ShopInfo> message = null;
             try {
-                message = shopInfoService.insertShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
+                ImageWrapper wrapper = new ImageWrapper();
+                wrapper.setImage(cmf.getInputStream());
+                wrapper.setFilename(cmf.getOriginalFilename());
+                message = shopInfoService.insertShopInfo(shop, wrapper);
                 // 4.4 根据返回信息进行处理
                 if (message.getState() == State.SUCCESS.getState()){
                     map.put("success", true);
@@ -294,9 +294,12 @@ public class ShopInfoManagementController
             Message<ShopInfo> message;
             try {
                 if (cmf == null){
-                    message = shopInfoService.updateShopInfo(shop, null, null);
+                    message = shopInfoService.updateShopInfo(shop, null);
                 }else{
-                    message = shopInfoService.updateShopInfo(shop, cmf.getInputStream(), cmf.getOriginalFilename());
+                    ImageWrapper wrapper = new ImageWrapper();
+                    wrapper.setImage(cmf.getInputStream());
+                    wrapper.setFilename(cmf.getOriginalFilename());
+                    message = shopInfoService.updateShopInfo(shop, wrapper);
                 }
                 if (message.getState() == State.SUCCESS.getState()){
                     map.put("success", true);

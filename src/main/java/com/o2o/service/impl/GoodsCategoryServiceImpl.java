@@ -4,7 +4,7 @@ import com.o2o.dao.GoodsCategoryMapper;
 import com.o2o.dto.Message;
 import com.o2o.entity.GoodsCategory;
 import com.o2o.exception.GoodsCategoryException;
-import com.o2o.service.GoodCategoryService;
+import com.o2o.service.GoodsCategoryService;
 import com.o2o.utils.enums.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class GoodsCategoryServiceImpl implements GoodCategoryService
+public class GoodsCategoryServiceImpl implements GoodsCategoryService
 {
     @Autowired
     private GoodsCategoryMapper goodsCategoryMapper;

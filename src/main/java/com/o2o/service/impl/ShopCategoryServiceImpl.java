@@ -15,7 +15,15 @@ public class ShopCategoryServiceImpl implements ShopCategoryService
     private ShopCategoryMapper shopCategoryMapper;
 
     /**
-     * <h3>传入店铺类型一定要带有父类型, 否则查询出来的就是全部店铺类型</h3>
+     * <h3>查询所有的父类型</h3>
+     * @return
+     */
+    @Override
+    public List<ShopCategory> findAllShopCategory() {
+        return shopCategoryMapper.findAllShopCategory();
+    }
+
+    /**
      * @param category 父类型
      * @return 店铺类型列表
      */
@@ -24,12 +32,4 @@ public class ShopCategoryServiceImpl implements ShopCategoryService
         return shopCategoryMapper.findAllShopCategory(category);
     }
 
-    /**
-     * <h3>查询所有的店铺类型</h3>
-     * @return 店铺类型列表
-     */
-    @Override
-    public List<ShopCategory> findAllShopCategory() {
-        return shopCategoryMapper.findAllShopCategory();
-    }
 }

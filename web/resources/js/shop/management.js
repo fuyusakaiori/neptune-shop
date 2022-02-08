@@ -16,7 +16,7 @@ $(function (){
                 id = data.id;
             }
             // 注: 不要忘了加 #
-            $('#shop-management').attr('href', '/o2o/shop-admin/edit?id=' + id);
+            $('#shop-management').attr('href', '/o2o/shop-admin/shop-edit?id=' + id);
         }
     });
 });

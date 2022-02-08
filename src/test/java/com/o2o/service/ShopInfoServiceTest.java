@@ -2,6 +2,7 @@ package com.o2o.service;
 
 import com.o2o.BaseTest;
 import com.o2o.TestUtils;
+import com.o2o.dto.ImageWrapper;
 import com.o2o.dto.Message;
 import com.o2o.entity.CampusArea;
 import com.o2o.entity.ShopInfo;
@@ -27,7 +28,10 @@ public class ShopInfoServiceTest extends BaseTest
     {
         ShopInfo shop = TestUtils.getShopInstance();
         File image = TestUtils.getImageFile();
-        Message message = shopInfoService.insertShopInfo(shop, new FileInputStream(image), image.getName());
+        ImageWrapper wrapper = new ImageWrapper();
+        wrapper.setFilename(image.getName());
+        wrapper.setImage(new FileInputStream(image));
+        Message<ShopInfo> message = shopInfoService.insertShopInfo(shop, wrapper);
         Assert.assertEquals(State.SUCCESS.getState(), message.getState());
     }
 
@@ -36,7 +40,10 @@ public class ShopInfoServiceTest extends BaseTest
         ShopInfo shop = new ShopInfo();
         shop.setShopId(11);
         File image = new File("D:\\图片\\涩图\\1629107036280.jpg");
-        Message message = shopInfoService.updateShopInfo(shop, new FileInputStream(image), "1629107036280.jpg");
+        ImageWrapper wrapper = new ImageWrapper();
+        wrapper.setFilename(image.getName());
+        wrapper.setImage(new FileInputStream(image));
+        Message<ShopInfo> message = shopInfoService.updateShopInfo(shop, wrapper);
         Assert.assertEquals(message.getInfo(), State.SUCCESS.getInfo());
     }
 
@@ -48,7 +55,7 @@ public class ShopInfoServiceTest extends BaseTest
         area.setCampusAreaId(2);
         condition.setCampusArea(area);
         condition.setShopName("店");
-        Message message = shopInfoService.findShopInfo(condition, 2, 2);
+        Message<ShopInfo> message = shopInfoService.findShopInfo(condition, 2, 2);
         List<ShopInfo> shops = message.getList();
         Assert.assertEquals(1, shops.size());
     }
