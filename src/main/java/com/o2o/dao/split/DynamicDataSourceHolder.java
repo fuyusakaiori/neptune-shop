@@ -4,13 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <h2>提供数据源对应的 LookUpKey </h2>
+ * <h2>动态数据源设置工具类</h2>
+ * <h3>提供设置、获取、移除当前的动态数据源对应的 Key 值</h3>
  */
 public class DynamicDataSourceHolder
 {
     private static Logger logger = LoggerFactory.getLogger(DynamicDataSourceHolder.class);
     // ThreadLocal 确保在多线程访问数据库的时候是线程安全的, 不会出现并发异常
-    private static ThreadLocal<String> context = new ThreadLocal<>();
+    private static final ThreadLocal<String> context = new ThreadLocal<>();
     // 主从数据源对应的 LookUplKey
     public static final String DATABASE_MASTER = "master";
     public static final String DATABASE_SLAVE = "slave";
