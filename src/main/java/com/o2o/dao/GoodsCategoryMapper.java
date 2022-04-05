@@ -19,14 +19,6 @@ public interface GoodsCategoryMapper
     List<GoodsCategory> findShopGoodsCategory(int id);
 
     /**
-     * <h3>查询所有父商品类型</h3>
-     * @param id 店铺编号
-     * @return 商品类型集合
-     */
-    List<GoodsCategory> findShopParentGoodsCategory(int id);
-
-
-    /**
      * <h3>批量插入商品类型</h3>
      * @param categories 商品类型集合
      * @return 是否插入成功

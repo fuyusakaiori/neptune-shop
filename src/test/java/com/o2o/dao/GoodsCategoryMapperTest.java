@@ -27,13 +27,6 @@ public class GoodsCategoryMapperTest extends BaseTest
         Assert.assertEquals(5, categories.size());
     }
 
-    @Test
-    @Ignore
-    public void findShopParentGoodsCategoryMapperTest(){
-        List<GoodsCategory> categories = goodsCategoryMapper.findShopParentGoodsCategory(9);
-        categories.forEach(System.out::println);
-        Assert.assertEquals(2, categories.size());
-    }
 
     @Test
     @Ignore

@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ShopCategoryService
 {
+        final static String SHOPCATEGORYLIST = "SHOPCATEGORYLIST";
+
         /**
          * <h4>1. 如果传入的店铺类型没有父类型, 那么就等同于查询所有店铺类型</h4>
          */

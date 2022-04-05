@@ -11,6 +11,7 @@ public class LocalAccount
     private String username;
     private String password;
     private Date createTime;
+    private Date updateTime;
     // 关联的用户
     private UserInfo userInfo;
 
@@ -18,14 +19,6 @@ public class LocalAccount
     {
     }
 
-    public LocalAccount(Integer localId, String username, String password, Date createTime, UserInfo userInfo)
-    {
-        this.localId = localId;
-        this.username = username;
-        this.password = password;
-        this.createTime = createTime;
-        this.userInfo = userInfo;
-    }
 
     public Integer getLocalId()
     {
@@ -75,5 +68,28 @@ public class LocalAccount
     public void setUserInfo(UserInfo userInfo)
     {
         this.userInfo = userInfo;
+    }
+
+    public Date getUpdateTime()
+    {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime)
+    {
+        this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "LocalAccount{" +
+                       "localId=" + localId +
+                       ", username='" + username + '\'' +
+                       ", password='" + password + '\'' +
+                       ", createTime=" + createTime +
+                       ", updateTime=" + updateTime +
+                       ", userInfo=" + userInfo +
+                       '}';
     }
 }

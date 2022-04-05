@@ -17,71 +17,59 @@ $(function () {
             if (data.success){
                 let categoriesHTML = '';
                 let categories = data.categories;
-                let parents = data.parents
                 // 获取集合长度
                 rows = Object.keys(categories).length;
-                // 获取所有的父类型
-                parents.map(function (parent, index) {
-                    set.add(parent);
-                })
                 categories.map(function (category, index) {
                     categoriesHTML += '<div class="row row-product-category now">'
                         + '<div class="col-20">' + (index + 1) + '</div>'
-                        + '<div class="col-20 product-category-name">' + category.goodsCategoryName + '</div>'
+                        + '<div class="col-20">' + category.goodsCategoryName + '</div>'
                         + '<div class="col-20">' + category.priority + '</div>'
-                        + '<div class="col-20">' + category.goodsCategoryParent.goodsCategoryName + '</div>'
                         + '<div class="col-20"><a href="#" class="button first" data-id="' + category.goodsCategoryId + '">删除</a></div>'
                         + '</div>';
                 });
                 $('#category-body').html(categoriesHTML);
             }else{
-                alert('查询商品类型信息失败!');
+                $.toast('查询商品类型信息失败!');
             }
         });
     }
 
     // 每次点击新增按钮都会新增一个空白行
     $('#new').click(function () {
-        let newHTML = $('#category-body').html();
-        newHTML += '<div class="row row-product-category temp"><div class="col-20">' + (++rows) + '</div>'
+        let newHTML = '';
+         newHTML += '<div class="row row-product-category temp"><div class="col-20">' + (++rows) + '</div>'
             + '<div class="col-20"><input class="category-input category" id="category-name" type="text" placeholder="分类名"></div>'
             + '<div class="col-20"><input class="category-input priority" id="priority" type="number" placeholder="优先级"></div>'
-            + '<div class="col-20"><select id="parent">' + findAllParentCategory(set) + '</select></div>'
             + '<div class="col-20"><a href="#" class="button second">删除</a></div>'
             + '</div>';
-        $('#category-body').html(newHTML);
+        $('#category-body').append(newHTML);
     });
 
     $('#submit').click(function () {
-        let list = [];
-        let newCategories = $('#temp');
+        let categories = [];
+        let newCategories = $('.temp');
         console.log(newCategories);
         // 注: 为什么要反过来写?
         newCategories.map(function (index, category) {
             let obj = {};
-            obj.goodsCategoryName = $(category).find('#category-name').val();
-            obj.priority = $(category).find('#priority').val();
-            obj.goodsCategoryParent = {
-                goodsCategoryId: $(category).find('#parent').find('option').not(function () {
-                    return !this.selected;
-                }).data('id')
-            };
+            obj.goodsCategoryName = $(category).find('.category').val();
+            obj.priority = $(category).find('.priority').val();
             console.log(obj);
             if (obj.goodsCategoryName && obj.priority){
-                list.push(obj);
+                categories.push(obj);
             }
         });
 
         $.ajax({
             url: insertURL,
             type: 'POST',
-            data: JSON.stringify(list),
+            data: JSON.stringify(categories),
             contentType: 'application/json',
             success: function (data) {
                 if (data.success){
                     init();
                 }else{
-                    alert("新增商品类型失败!");
+                    $.toast("新增商品类型失败!");
                 }
             }
         });
@@ -96,30 +84,22 @@ $(function () {
     // TODO 暂时还存在问题 删除已经添加的商品类型信息
     $('#category-body').on('click', '.first', function (e) {
         let target = e.currentTarget;
-        $.ajax({
-            url: deleteURL,
-            type: 'POST',
-            data: JSON.stringify({
-                goodsCategoryId: target.dataset.id
-            }),
-            contentType: 'application/json',
-            success: function (data) {
-                if (data.success){
-                    alert("删除成功!");
-                    init();
-                }else{
-                    alert("删除失败!");
+        $.confirm("确定删除吗?", function () {
+            $.ajax({
+                url: deleteURL,
+                type: 'POST',
+                data: {categoryId : target.dataset.id},
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success){
+                        $.toast("删除成功!");
+                        init();
+                    }else{
+                        $.toast(data.message);
+                    }
                 }
-            }
-        });
+            });
+        })
     })
 
-    function findAllParentCategory(set) {
-        let categoriesHTML = '';
-        for (let category of set){
-            console.log(category);
-            categoriesHTML += '<option data-id="' + category.goodsCategoryId + '">' + category.goodsCategoryName + '</option>'
-        }
-        return categoriesHTML;
-    }
 });

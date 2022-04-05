@@ -8,6 +8,7 @@ import com.o2o.exception.GoodsCategoryException;
 import com.o2o.utils.enums.State;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class GoodsCategoryServiceTest extends BaseTest
     private GoodsCategoryService goodsCategoryService;
 
     @Test
+    @Ignore
     public void B_findShopCategoryServiceTest(){
         Message<GoodsCategory> message = goodsCategoryService.findShopGoodsCategory(11);
         message.getList().forEach(System.out::println);
@@ -26,6 +28,7 @@ public class GoodsCategoryServiceTest extends BaseTest
     }
 
     @Test
+    @Ignore
     public void A_batchInsertGoodsCategoryServiceTest() throws GoodsCategoryException {
         Message<GoodsCategory> message = goodsCategoryService.batchInsertGoodsCategory(TestUtils.getGoodsCategory());
         Assert.assertEquals(message.getState(), State.SUCCESS.getState());
@@ -33,8 +36,8 @@ public class GoodsCategoryServiceTest extends BaseTest
 
     @Test
     public void C_deleteGoodsCategoryServiceTest() throws GoodsCategoryException {
-        Message<GoodsCategory> message = goodsCategoryService.deleteGoodsCategory(12, 11);
+        Message<GoodsCategory> message = goodsCategoryService.deleteGoodsCategory(11, 9);
 
-        Assert.assertEquals(State.SUCCESS.getState(), message.getState());
+        Assert.assertEquals(State.FAILURE.getState(), message.getState());
     }
 }

@@ -3,7 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 注: 如果 web.xml 整合 Spring 文件失效, 可以考虑单独使用整合文件整合, 然后导入 web.xml 文件中 -->
     <import resource="spring-dao.xml"/>
     <import resource="spring-service.xml"/>
     <import resource="spring-web.xml"/>
+    <import resource="spring-redis.xml"/>
+
 </beans>

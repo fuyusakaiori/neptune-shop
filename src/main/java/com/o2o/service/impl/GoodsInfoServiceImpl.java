@@ -13,26 +13,25 @@ import com.o2o.utils.ImageUtil;
 import com.o2o.utils.PageUtil;
 import com.o2o.utils.PathUtil;
 import com.o2o.utils.enums.State;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 public class GoodsInfoServiceImpl implements GoodsInfoService
 {
-    @Autowired
+    @Resource
     private GoodsInfoMapper goodsInfoMapper;
 
-    @Autowired
+    @Resource
     private GoodsImageMapper goodsImageMapper;
 
-    private static final Logger logger = LoggerFactory.getLogger(GoodsInfoServiceImpl.class);
 
     @Override
     @Transactional
@@ -42,7 +41,6 @@ public class GoodsInfoServiceImpl implements GoodsInfoService
             return new Message<>(State.FAILURE);
         // 2 先添加缩略图后给对象设置相应的图片地址: 因为商品信息中包含了店铺编号, 可以找到对应的路径
         if (thumbnail != null){
-            // TODO 之前也有个方法是给对象设置图片地址, 理论上可以使用反射加泛型重构到一起, 但是很麻烦, 之后再说
             setImageURL(goods, thumbnail);
         }
         // 3. 先添加商品信息
@@ -67,7 +65,8 @@ public class GoodsInfoServiceImpl implements GoodsInfoService
 
     @Override
     @Transactional
-    public Message<GoodsInfo> updateGoodsInfo(GoodsInfo condition, ImageWrapper thumbnail, List<ImageWrapper> detailImages) throws GoodsInfoException, GoodsImageException {
+    public Message<GoodsInfo> updateGoodsInfo(GoodsInfo condition, ImageWrapper thumbnail, List<ImageWrapper> detailImages)
+            throws GoodsInfoException, GoodsImageException {
         if (condition == null || condition.getShopInfo() == null || condition.getShopInfo().getShopId() <= 0 || condition.getGoodsId() <= 0)
             return new Message<>(State.FAILURE);
         GoodsInfo goods;
@@ -102,7 +101,7 @@ public class GoodsInfoServiceImpl implements GoodsInfoService
                     throw new GoodsImageException("删除商品详情图失败!");
                 }
             }
-            logger.debug("商品详情图删除成功!");
+            log.debug("商品详情图删除成功!");
             // 移除详情图表中的相应的记录
             try {
                 int result = goodsImageMapper.deleteGoodsImage(goods.getGoodsId());
@@ -115,13 +114,13 @@ public class GoodsInfoServiceImpl implements GoodsInfoService
             setDetailImage(condition, detailImages);
         }
 
-
         return new Message<>(State.SUCCESS);
     }
 
     @Override
     public Message<GoodsInfo> findGoodsInfo(int id) {
-        if (id <= 0) return new Message<>(State.NULL_GOODS_ID);
+        if (id <= 0)
+            return new Message<>(State.INVALID_GOODS_ID);
         GoodsInfo goods = goodsInfoMapper.findGoodsInfoById(id);
         return new Message<>(State.SUCCESS, goods);
     }

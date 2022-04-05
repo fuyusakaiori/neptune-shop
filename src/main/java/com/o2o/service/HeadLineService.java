@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface HeadLineService
 {
+    String HEADLINESKEY = "HEADLINESKEY";
+
     List<HeadLine> findHeadLine(HeadLine condition);
 }

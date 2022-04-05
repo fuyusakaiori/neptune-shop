@@ -8,37 +8,27 @@
         <id column="goods_category_id" property="goodsCategoryId"/>
         <result column="goods_category_name" property="goodsCategoryName"/>
         <result column="goods_category_priority" property="priority"/>
-        <association property="goodsCategoryParent" column="goods_category_parent_id" javaType="goodsCategory">
-            <id column="gid" property="goodsCategoryId"/>
-            <result column="gcn" property="goodsCategoryName"/>
-        </association>
+        <!-- 注: 不需要使用父类型 -->
     </resultMap>
 
     <!-- 自联表结果集映射问题解决-->
     <select id="findShopGoodsCategory" resultType="goodsCategory" resultMap="categoryMap">
-        select self.*, other.goods_category_id as gid, other.goods_category_name as gcn
+        select self.*
         from o2o.tb_goods_category as self
-        inner join o2o.tb_goods_category as other
-        on self.goods_category_parent_id = other.goods_category_id
         where self.shop_id = #{id}
         order by self.goods_category_priority desc
     </select>
 
-    <select id="findShopParentGoodsCategory" resultType="goodsCategory">
-        select * from o2o.tb_goods_category
-        where shop_id = #{id} and goods_category_parent_id is null;
-    </select>
 
     <insert id="batchInsertGoodsCategory" parameterType="java.util.List">
         insert into o2o.tb_goods_category
-        (goods_category_name, goods_category_priority, create_time, goods_category_parent_id, shop_id)
+        (goods_category_name, goods_category_priority, create_time, shop_id)
         values
         <foreach collection="list" item="category" index="index" separator=",">
             <!-- 注: 记得类别中的属于是需要引用的 -->
             (#{category.goodsCategoryName},
             #{category.priority},
             #{category.createTime},
-            #{category.goodsCategoryParent.goodsCategoryId},
             #{category.shopId})
         </foreach>
     </insert>

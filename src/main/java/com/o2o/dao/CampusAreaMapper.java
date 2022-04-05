@@ -7,7 +7,7 @@ import java.util.List;
 public interface CampusAreaMapper
 {
     /**
-     * 查询校园所有区域
+     * <h3>查询所有校园区域</h3>
      * @return campusAreas
      */
     List<CampusArea> findAllCampusArea();

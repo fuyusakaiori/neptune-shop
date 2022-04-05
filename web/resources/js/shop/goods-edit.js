@@ -127,10 +127,11 @@ $(function() {
                 cache : false,
                 success : function(data) {
                     if (data.success) {
+                        window.location.href = '/o2o/shop-admin/goods-list';
                         $.toast('提交成功！');
-                        $('#kaptcha-img').click();
                     } else {
                         $.toast('提交失败！');
+                        console.log(data.message);
                         $('#captcha-img').click();
                     }
                 }

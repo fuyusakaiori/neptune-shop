@@ -1,17 +1,14 @@
 package com.o2o.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * <h2>提取请求中不同类型的数据</h2>
  */
-public class RequestUtil
-{
-    // 返回值类型的不同是不可以作为方法重载的标志的, 即使虚拟机内部是可以的
-    private static final Logger logger = LoggerFactory.getLogger(RequestUtil.class);
+@Slf4j
+public class RequestUtil {
 
     /**
      * 获取请求中存放的字符串类型的数据
@@ -39,7 +36,7 @@ public class RequestUtil
             return Integer.parseInt(request.getParameter(key));
         }
         catch (NumberFormatException e) {
-            logger.error(e.getMessage());
+            log.error(e.getMessage());
             return -1;
         }
     }
@@ -50,7 +47,7 @@ public class RequestUtil
             return Boolean.parseBoolean(request.getParameter(key));
         }
         catch (Exception e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
             return false;
         }
     }

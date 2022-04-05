@@ -25,7 +25,8 @@ import java.util.Properties;
 @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 public class DynamicDataSourceInterceptor implements Interceptor
 {
-    private static Logger logger = LoggerFactory.getLogger(DynamicDataSourceInterceptor.class);
+    private final static Logger logger = LoggerFactory.getLogger(DynamicDataSourceInterceptor.class);
+
     private static final String REGEX = ".*insert\\u0020.*|.*delete\\u0020.*|.*update\\u0020";
     @Override
     public Object intercept(Invocation invocation) throws Throwable

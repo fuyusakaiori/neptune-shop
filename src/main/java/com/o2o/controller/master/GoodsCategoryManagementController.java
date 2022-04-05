@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/shop-management")
@@ -40,14 +42,9 @@ public class GoodsCategoryManagementController
         try {
             ShopInfo shop = (ShopInfo) object;
             Message<GoodsCategory> message = goodsCategoryService.findShopGoodsCategory(shop.getShopId());
-            // 获取所有父类型
-            Set<GoodsCategory> set = new HashSet<>();
-            message.getList().forEach(category -> {set.add(category.getGoodsCategoryParent());});
-            set.forEach(System.out::println);
             if (message.getState() == State.SUCCESS.getState()){
                 map.put("success", true);
                 map.put("categories", message.getList());
-                map.put("parents", set);
             }else{
                 map.put("success", false);
                 map.put("message", message.getInfo());
@@ -106,27 +103,25 @@ public class GoodsCategoryManagementController
 
     @RequestMapping(value = "/goods-category/delete", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> deleteShopGoodsCategory(@RequestBody int categoryId, HttpServletRequest request){
+    // TODO 研究接收参数的方式
+    public Map<String, Object> deleteShopGoodsCategory(Integer categoryId, HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
+        // 1. 从权限的角度验证是否可以删除
         Object obj = request.getSession().getAttribute("shop");
-        if (obj == null){
+        if (obj == null || categoryId == null || categoryId <= 0){
             map.put("success", false);
-            map.put("message", "无法向店铺添加商品类型");
-            return map;
-        }
-        if (categoryId <= 0){
-            map.put("success", false);
-            map.put("message", "传入的店铺编号或者商品类型编号有误!");
+            map.put("message", "没有权限删除商品或者传入的商品类型编号错误!");
             return map;
         }
         try {
             ShopInfo shop = (ShopInfo) obj;
-            Message<GoodsCategory> message = goodsCategoryService.deleteGoodsCategory(categoryId, shop.getShopId());
-            if (message.getState() == State.SUCCESS.getState()){
+            Message<GoodsCategory> categoryMessage = goodsCategoryService.deleteGoodsCategory(categoryId, shop.getShopId());
+            if (categoryMessage.getState() == State.SUCCESS.getState()){
                 map.put("success", true);
             }else {
                 map.put("success", false);
-                map.put("message", "删除商品类型失败!");
+                map.put("message", categoryMessage.getState() == State.FAILURE.getState() ?
+                                           "该商品类型下还有其他商品, 无法删除!": "删除失败!");
             }
             return map;
         }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="redis.clients.jedis.JedisPoolConfig" id="jedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxActive}"/>
+        <!-- 空闲的连接数量 -->
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="maxWaitMillis" value="${redis,pool.maxWait}"/>
+        <!-- 获取连接的时候检查有效性 -->
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+    </bean>
+
+    <!-- Jedis 客户端 -->
+    <bean class="com.o2o.cache.JedisWritePool" id="jedisWritePool" depends-on="jedisPoolConfig">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1" value="${redis.hostname}"/>
+        <constructor-arg index="2" value="${redis.port}" type="int"/>
+    </bean>
+
+    <bean id="jedisUtil" class="com.o2o.cache.JedisUtil">
+        <property name="jedisPool" ref="jedisWritePool"/>
+    </bean>
+
+    <!-- 注入内部类 -->
+    <bean id="keys" class="com.o2o.cache.JedisUtil$Keys">
+    </bean>
+
+    <bean id="strings" class="com.o2o.cache.JedisUtil$Strings">
+    </bean>
+
+</beans>

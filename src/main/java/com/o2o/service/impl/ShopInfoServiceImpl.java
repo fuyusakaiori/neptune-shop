@@ -10,22 +10,20 @@ import com.o2o.utils.ImageUtil;
 import com.o2o.utils.PageUtil;
 import com.o2o.utils.PathUtil;
 import com.o2o.utils.enums.State;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ShopInfoServiceImpl implements ShopInfoService
 {
-    @Autowired
+    @Resource
     private ShopInfoMapper shopInfoMapper;
-
-    private static final Logger logger = LoggerFactory.getLogger(ShopInfoServiceImpl.class);
 
     /**
      * 添加店铺信息
@@ -40,7 +38,7 @@ public class ShopInfoServiceImpl implements ShopInfoService
     {
         // 1. 店铺信息为空, 是不可以直接添加的, 返回相应的信息
         if (shop == null)
-            return new Message<>(State.NULL_SHOP);
+            return new Message<>(State.NULL);
         // TODO 店铺信息中还包含对应的店铺老板、店铺类别、店铺所在区域都是需要相应的验证的
 
         // 2. 给店铺设置默认信息
@@ -55,7 +53,6 @@ public class ShopInfoServiceImpl implements ShopInfoService
                 throw new ShopException("[添加店铺信息失败]-根本原因:\t");
         }
         catch (Exception e) {
-            logger.error(e.toString());
             throw new ShopException("[添加店铺信息失败]-根本原因:\t" + e.getMessage());
         }
         // 注: 这里只能够先添加店铺信息, 后添加图片, 原因是因为实体类中没有主键, 所以没有办法先生成相应的路径
@@ -68,7 +65,6 @@ public class ShopInfoServiceImpl implements ShopInfoService
                     throw new ShopException("[添加图片失败]-根本原因:\t");
             }
             catch (Exception e) {
-                logger.error(e.toString());
                 throw new ShopException("[图片生成失败]-根本原因:\t" + e.getMessage());
             }
         }
@@ -84,20 +80,21 @@ public class ShopInfoServiceImpl implements ShopInfoService
     public Message<ShopInfo> findShopInfoById(int id) {
         // 0. 如果传入的店铺编号是非法的, 那么返回的店铺信息也就是非法的
         return id > 0 ? new Message<>(State.SUCCESS, shopInfoMapper.findShopInfoById(id)):
-                       new Message<>(State.NULL_SHOP);
+                       new Message<>(State.NULL);
     }
 
     @Override
     @Transactional
     public Message<ShopInfo> updateShopInfo(ShopInfo shop, ImageWrapper wrapper) throws ShopException {
         // 0. 检查传入的店铺信息是否非法: 店铺 ID 没有办法更改吧, 这个判断有必要吗?
-        if (shop == null || shop.getShopId() <= 0) return new Message<>(State.FAILURE);
+        if (shop == null || shop.getShopId() <= 0)
+            return new Message<>(State.FAILURE);
         // 1. 检查是否需要更新图片: 如果传入的流不等于空那就需要更新图片
         try {
             if (wrapper != null){
                 // 1.1 先查询到原来店铺的图片地址
                 ShopInfo update = shopInfoMapper.findShopInfoById(shop.getShopId());
-                logger.debug("查询得到的 img_url :{}", update.getImageURL());
+                log.debug("查询得到的 img_url :{}", update.getImageURL());
                 // 1.2 如果此前已经上传过图片了, 那么就需要删除此前的图片（每个店铺只拥有一张图片）
                 if (update.getImageURL() != null){
                     if(!ImageUtil.deleteImagePath(update.getImageURL()))
@@ -125,7 +122,7 @@ public class ShopInfoServiceImpl implements ShopInfoService
         List<ShopInfo> shops = shopInfoMapper.findShopInfo(condition, start, pageSize);
         int count = shopInfoMapper.getShopInfoCount(condition);
 
-        return shops == null || shops.size() == 0 ? new Message<>(State.NULL_SHOP):
+        return shops == null || shops.size() == 0 ? new Message<>(State.NULL):
                        new Message<>(State.SUCCESS, shops, count);
     }
 
@@ -136,7 +133,7 @@ public class ShopInfoServiceImpl implements ShopInfoService
      * @param wrapper 封装类
      */
     private void insertShopImage(ShopInfo shop, ImageWrapper wrapper){
-        logger.debug("{}",shop.getShopId());
+        log.debug("{}",shop.getShopId());
         String imageURL = ImageUtil.generateThumbnailator(wrapper, PathUtil.getShopImagePath(shop.getShopId()));
         shop.setImageURL(imageURL);
     }

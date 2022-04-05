@@ -1,10 +1,12 @@
 package com.o2o.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * 辅助图片工具类读取路径的工具类
+ * <h2>辅助图片工具类读取路径的工具类</h2>
  */
-public class PathUtil
-{
+@Slf4j
+public class PathUtil {
     // 获取文件系统的路径分隔符
     public static String separator = System.getProperty("file.separator");
 

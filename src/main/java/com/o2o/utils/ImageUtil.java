@@ -1,10 +1,9 @@
 package com.o2o.utils;
 
 import com.o2o.dto.ImageWrapper;
+import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.imageio.ImageIO;
@@ -20,12 +19,12 @@ import java.util.Random;
 
 /**
  * <h2>处理图片的工具类</h2>
- * <p>1. 采用 Thumbnailator 工具类存储图片</p>
- * <p>2. 图片是存储在服务端的非项目文件夹下, 防止项目每次编译的时候清除上传的文件?</p>
+ * <h3>1. 采用 Thumbnailator 工具类存储图片</h3>
+ * <h3>2. 图片是存储在服务端的非项目文件夹下, 防止项目每次编译的时候清除上传的文件?</h3>
  */
-public class ImageUtil
-{
-    private final static Logger logger = LoggerFactory.getLogger(ImageUtil.class);
+@Slf4j
+public class ImageUtil {
+
     // 格式化日期工具类: 确保不会出现线程安全问题, 最后设置成不可变对象
     private final static SimpleDateFormat SDF = new SimpleDateFormat("yyyyMMddHHmm");
     // 生成随机数的工具类
@@ -48,7 +47,7 @@ public class ImageUtil
             cmf.transferTo(file);
         }
         catch (IOException e) {
-            logger.error(e.getMessage());
+            log.error(e.getMessage());
         }
 
         return file;
@@ -72,10 +71,10 @@ public class ImageUtil
         makeImageDirectory(target);
         // 4. 存储图片的相对路径
         String relative = target + filename + extension;
-        logger.debug("相对路径:\t" + relative);
+        log.debug("相对路径:\t" + relative);
         // 5. 存储图片的绝对路径
         File destination = new File(PathUtil.getImageBasePath() + relative);
-        logger.debug("绝对路径:\t" + destination);
+        log.debug("绝对路径:\t" + destination);
         // 6. 图片存储在绝对路径定位的目录下
         try {
             // 7. 直接使用流对象也是可以
@@ -86,7 +85,7 @@ public class ImageUtil
                     .toFile(destination);
         }
         catch (IOException e) {
-            logger.error(e.toString());
+            log.error(e.toString());
         }
         return relative;
     }
@@ -104,7 +103,7 @@ public class ImageUtil
                 Files.createDirectories(path);
             }
             catch (IOException e) {
-                logger.error(e.toString());
+                log.error(e.toString());
             }
         }
     }
@@ -114,7 +113,7 @@ public class ImageUtil
      */
     private static String getFileExtension(String filename) {
         // 避免因为各种原因导致传入的文件流为空
-        logger.debug("文件名:\t" + filename);
+        log.debug("文件名:\t" + filename);
         return filename.substring(filename.lastIndexOf("."));
     }
 
@@ -169,7 +168,7 @@ public class ImageUtil
                 // 4. 设置图片的压缩率
                 .outputQuality(0.8).toFile("D:\\图片\\添加了水印的图片.png");
         // TODO 等待解决的问题: 读取水印的路径使用相对路径存在问题, 水印的位置也存在一点问题
-        logger.debug(System.getProperty("os.name"));
+        log.debug(System.getProperty("os.name"));
     }
 
 }

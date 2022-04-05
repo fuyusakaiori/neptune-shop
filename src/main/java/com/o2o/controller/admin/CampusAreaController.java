@@ -5,7 +5,6 @@ import com.o2o.service.CampusAreaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,20 +28,15 @@ public class CampusAreaController
     // 注: 交付给前端字符串的形式便于解析
     @ResponseBody
     private Map<String, Object> findAllCampusArea(){
-        logger.info("==========start==========");
-        long start = System.currentTimeMillis();
         Map<String, Object> map = new HashMap<>();
-        List<CampusArea> cal = campusAreaService.findAllCampusArea();
         try {
+            List<CampusArea> cal = campusAreaService.findAllCampusArea();
             map.put("rows", cal);
             map.put("total", cal.size());
         }catch (Exception e){
             map.put("success", false);
             map.put("error", e.toString());
         }
-        long end = System.currentTimeMillis();
-        logger.debug("cost-time:{}", end - start);
-        logger.info("==========end==========");
         return map;
     }
 }

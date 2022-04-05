@@ -1,3 +1,6 @@
+/**
+ * 显示所有商品
+ */
 $(function() {
     // 获取此店铺下的商品列表的URL
     let initURL = '/o2o/shop-management/goods/list?pageIndex=1&pageSize=999';

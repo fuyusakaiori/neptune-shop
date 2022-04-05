@@ -40,7 +40,7 @@ $(function () {
             console.log(categoryHTML);
             $('.row').html(categoryHTML);
         }else{
-            console.log("获取信息失败! 错误信息: ");
+            console.log("获取信息失败! 错误信息: " + data.message);
         }
 
     });

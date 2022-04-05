@@ -18,8 +18,8 @@ public class CampusAreaMapperTest extends BaseTest
 
     @Test
     public void findAllCampusAreaMapperTest(){
-        List<CampusArea> cal = campusAreaMapper.findAllCampusArea();
-        // 断言测试
-        Assert.assertEquals(2, cal.size());
+        List<CampusArea> areas = campusAreaMapper.findAllCampusArea();
+        areas.forEach(System.out::println);
+        Assert.assertEquals(2, areas.size());
     }
 }
