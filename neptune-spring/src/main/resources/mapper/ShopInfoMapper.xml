@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.o2o.dao.ShopInfoMapper">
+
+    <!-- 这里是不会开启驼峰转换的, 必须全部手写 -->
+    <resultMap id="shopMap" type="shopInfo">
+        <id column="shop_id" property="shopId"/>
+        <result column="shop_name" property="shopName"/>
+        <result column="shop_img_url" property="imageURL"/>
+        <result column="shop_desc" property="description"/>
+        <result column="shop_address" property="address"/>
+        <result column="shop_phone" property="phone"/>
+        <result column="shop_priority" property="priority"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="advice" property="advice"/>
+        <association property="category" column="shop_category_id" javaType="shopCategory">
+            <id column="shop_category_id" property="shopCategoryId"/>
+            <result column="shop_category_name" property="categoryName"/>
+        </association>
+        <association property="campusArea" column="area_id" javaType="campusArea">
+            <id column="campusarea_Id" property="campusAreaId"/>
+            <result column="campusareaName" property="campusAreaName"/>
+        </association>
+        <association property="master" column="owner_id" javaType="UserInfo">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="username"/>
+        </association>
+    </resultMap>
+    
+    <!--
+    功能: 新增店铺信息
+     -->
+    <insert id="insertShopInfo" parameterType="shopInfo" useGeneratedKeys="true" keyColumn="shop_id" keyProperty="shopId">
+        insert into
+            o2o.tb_shop_info(owner_id, area_id, shop_category_id,
+                             shop_name, shop_desc, shop_address, shop_phone,
+                             shop_priority, shop_img_url, create_time, update_time, advice)
+        values(#{master.userId}, #{campusArea.campusAreaId}, #{category.shopCategoryId},
+               #{shopName}, #{description}, #{address}, #{phone}, #{priority}, #{imageURL},
+               #{createTime}, #{updateTime}, #{advice})
+    </insert>
+
+    <!--
+    功能: 更新店铺信息
+    注意: 不可以更新店铺主键、店铺区域、店铺老板、创建时间
+    -->
+    <update id="updateShopInfo" useGeneratedKeys="true" keyColumn="shop_id" keyProperty="shopId">
+        update o2o.tb_shop_info
+        <set><!-- 代表 set 关键字 -->
+            <if test="shopName != null">shop_name = #{shopName},</if>
+            <if test="description != null">shop_desc = #{description},</if>
+            <if test="address != null">shop_address = #{address},</if>
+            <if test="phone != null">shop_phone = #{phone},</if>
+            <if test="priority != null">shop_priority = #{priority},</if>
+            <if test="imageURL != null">shop_img_url = #{imageURL},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="advice != null">advice = #{advice},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="campusArea != null">area_id = #{campusArea.campusAreaId},</if>
+            <if test="category != null">shop_category_id = #{category.shopCategoryId}</if>
+        </set><!-- 每个分支后面记得加逗号 -->
+        <where>
+            shop_id = #{shopId}
+        </where>
+    </update>
+
+
+    <select id="findShopInfoById" resultMap="shopMap" parameterType="_int">
+        select
+        tb_shop_info.*,
+        tb_shop_category.shop_category_id, tb_shop_category.shop_category_name,
+        tb_campusarea.campusarea_id, tb_campusarea.campusarea_name
+        from o2o.tb_shop_info
+        inner join o2o.tb_shop_category on tb_shop_info.shop_category_id = tb_shop_category.shop_category_id
+        inner join o2o.tb_campusarea on tb_shop_info.area_id = tb_campusarea.campusarea_id
+        where shop_id = #{id};
+    </select>
+
+    <select id="findShopInfo" resultMap="shopMap">
+        select
+        o2o.tb_shop_info.*,
+        o2o.tb_shop_category.shop_category_id, o2o.tb_shop_category.shop_category_name,
+        o2o.tb_campusarea.campusarea_id, o2o.tb_campusarea.campusarea_name
+        from o2o.tb_shop_info
+        inner join o2o.tb_shop_category on tb_shop_info.shop_category_id = tb_shop_category.shop_category_id
+        inner join o2o.tb_campusarea on tb_shop_info.area_id = tb_campusarea.campusarea_id
+        <where>
+            <if test="condition != null">
+                <if test="condition.shopName != null">
+                    <!-- 模糊查询不能够使用 #{}, 只能够使用 ${} -->
+                    and shop_name like '%${condition.shopName}%'
+                </if>
+                <if test="condition.category != null">
+                    <if test="condition.category.shopCategoryId != null">
+                        and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                    </if>
+                    <if test="condition.category.parentCategoryId != null">
+                        and o2o.tb_shop_category.shop_category_parent_id = #{condition.category.parentCategoryId}
+                    </if>
+                </if>
+                <if test="condition.status != null">
+                    and status = #{condition.status}
+                </if>
+                <if test="condition.campusArea != null and condition.campusArea.campusAreaId != null">
+                    and area_id = #{condition.campusArea.campusAreaId}
+                </if>
+                <if test="condition.master != null and condition.master.userId != null">
+                    and owner_id = #{condition.master.userId}
+                </if>
+            </if>
+        </where>
+        order by tb_shop_info.shop_priority
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="getShopInfoCount" resultType="_int" parameterType="shopInfo">
+        select
+        count(1)
+        from o2o.tb_shop_info
+        inner join o2o.tb_shop_category on tb_shop_info.shop_category_id = tb_shop_category.shop_category_id
+        inner join o2o.tb_campusarea on tb_shop_info.area_id = tb_campusarea.campusarea_id
+        <where>
+            <if test="condition != null">
+                <if test="condition.shopName != null">
+                    and shop_name like '%${condition.shopName}%'
+                </if>
+                <if test="condition.category != null">
+                    <if test="condition.category.shopCategoryId != null">
+                        and o2o.tb_shop_info.shop_category_id = #{condition.category.shopCategoryId}
+                    </if>
+                    <if test="condition.category.parentCategoryId != null">
+                        and o2o.tb_shop_category.shop_category_parent_id = #{condition.category.parentCategoryId}
+                    </if>
+                </if>
+                <if test="condition.status != null">
+                    and status = #{condition.status}
+                </if>
+                <if test="condition.campusArea != null and condition.campusArea.campusAreaId != null">
+                    and area_id = #{condition.campusArea.campusAreaId}
+                </if>
+                <if test="condition.master != null and condition.master.userId != null">
+                    and owner_id = #{condition.master.userId}
+                </if>
+            </if>
+        </where>
+    </select>
+
+</mapper>

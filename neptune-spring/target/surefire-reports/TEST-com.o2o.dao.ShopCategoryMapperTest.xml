@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="1" name="com.o2o.dao.ShopCategoryMapperTest" time="0.002" errors="0" skipped="0">
+  <properties>
+    <property name="idea.version" value="2022.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\bin"/>
+    <property name="java.vm.version" value="25.271-b09"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.runtime.version" value="1.8.0_271-b09"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="D:\cache\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="D:\jetbrain\idea\IntelliJ IDEA 2022.1\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\environment\jdk\jdk 1.8\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\environment\jdk\jdk-11.0.13_windows-x64_bin\jdk-11.0.13\bin;D:\vmware\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\PyCharm\python\Scripts\;D:\PyCharm\python\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\PyCharm\graphviz\bin;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;D:\environment\tomcat\apache-tomcat-9.0.40\bin;D:\mingw\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin;D:\environment\mysql\mysql-5.7.33-winx64\mysql-5.7.33-winx64\bin;C:\Program Files\Git\cmd;D:\前端\node.js;D:\前端\node.js\node-global;D:\pandoc\pandoc-2.11.3.2-windows-x86_64\pandoc-2.11.3.2;D:\远程访问工具\Xftp\;D:\远程访问工具\Xshell\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\environment\redis;D:\environment\golang;D:\environment\golang\bin;D:\environment\protoc-3.7.1-win64\bin;C:\Users\shenzhouhang\scoop\shims;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\Bandizip\;D:\IDEA\IntelliJ IDEA 2020.1.3\bin;D:\Rider\JetBrains Rider 2020.1.4\bin;D:\CLion\CLion 2020.2\bin;D:\mingw\x86_64-6.4.0-release-posix-seh-rt_v5-rev0\mingw64\bin;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\WebStorm\WebStorm 2021.1.1\bin;D:\vscode\Microsoft VS Code\bin;D:\jetbrain\idea\IntelliJ IDEA 2022.1\bin;C:\Users\shenzhouhang\AppData\Local\Programs\oh-my-posh\bin;D:\jetbrain\GoLand 2022.1.3\bin;."/>
+    <property name="maven.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\shenzhouhang"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="shenzhouhang"/>
+    <property name="java.class.path" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds-2.6.0.jar;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds.license;D:\jetbrain\idea\IntelliJ IDEA 2022.1\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\environment\jdk\jdk 1.8\jdk\jre"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.1 -s D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_271"/>
+    <property name="java.ext.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\resources.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\rt.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\sunrsasign.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jsse.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jce.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\charsets.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jfr.jar;D:\environment\jdk\jdk 1.8\jdk\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.o2o.dao.ShopCategoryMapperTest" name="findAllShopCategoryMapperTest" time="0.002">
+    <failure message="expected:&lt;3&gt; but was:&lt;6&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;3&gt; but was:&lt;6&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.o2o.dao.ShopCategoryMapperTest.findAllShopCategoryMapperTest(ShopCategoryMapperTest.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>01:45:07.298 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@39aa45a1 testClass = LocalAccountMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.298 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 56, missCount = 1]
+01:45:07.298 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test class: context [DefaultTestContext@701a32 testClass = LocalAccountMapperTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@39aa45a1 testClass = LocalAccountMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+01:45:07.299 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.299 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:45:07.299 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:45:07.299 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.o2o.dao.ShopCategoryMapperTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+01:45:07.300 [main] DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@f2c488 declaringClass = &apos;com.o2o.BaseTest&apos;, classes = &apos;{}&apos;, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+01:45:07.300 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.300 [main] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [com.o2o.dao.ShopCategoryMapperTest]: using defaults.
+01:45:07.300 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:45:07.301 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@54acff7d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7bc9e6ab, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5488b5c5, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4248ed58, org.springframework.test.context.support.DirtiesContextTestExecutionListener@712ca57b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4564e94b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@54534abf, org.springframework.test.context.event.EventPublishingTestExecutionListener@51745f40]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.301 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.302 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.302 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@45673f68 testClass = ShopCategoryMapperTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+01:45:07.302 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.302 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 57, missCount = 1]
+01:45:07.302 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.302 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.dao.ShopCategoryMapperTest]
+01:45:07.303 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@45673f68 testClass = ShopCategoryMapperTest, testInstance = com.o2o.dao.ShopCategoryMapperTest@69e308c6, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]]].
+01:45:07.303 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.303 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 58, missCount = 1]
+01:45:07.304 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.304 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 59, missCount = 1]
+01:45:07.304 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@45673f68 testClass = ShopCategoryMapperTest, testInstance = com.o2o.dao.ShopCategoryMapperTest@69e308c6, testMethod = findAllShopCategoryMapperTest@ShopCategoryMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+01:45:07.305 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.305 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 60, missCount = 1]
+01:45:07.305 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.306 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 61, missCount = 1]
+01:45:07.306 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+01:45:07.306 [main] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@667e34b1] was not registered for synchronization because synchronization is not active
+01:45:07.307 [main] DEBUG com.o2o.dao.split.DynamicDataSourceInterceptor - ���÷���[com.o2o.dao.ShopCategoryMapper.findAllShopCategory], ���ʵ�����Դ[slave], SQL ����[SELECT]
+01:45:07.307 [main] DEBUG com.o2o.dao.split.DynamicDataSourceHolder - ���ʵ�����Դ����: slave
+01:45:07.309 [main] DEBUG org.springframework.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+01:45:07.309 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] will not be managed by Spring
+01:45:07.309 [main] DEBUG com.o2o.dao.ShopCategoryMapper.findAllShopCategory - ==&gt;  Preparing: select * from o2o.tb_shop_category WHERE shop_category_parent_id is null order by shop_category_priority desc 
+01:45:07.310 [main] DEBUG com.o2o.dao.ShopCategoryMapper.findAllShopCategory - ==&gt; Parameters: 
+01:45:07.328 [main] DEBUG com.o2o.dao.ShopCategoryMapper.findAllShopCategory - &lt;==      Total: 6
+01:45:07.329 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@667e34b1]
+01:45:07.329 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.329 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 62, missCount = 1]
+01:45:07.329 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.329 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 63, missCount = 1]
+01:45:07.330 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@45673f68 testClass = ShopCategoryMapperTest, testInstance = com.o2o.dao.ShopCategoryMapperTest@69e308c6, testMethod = findAllShopCategoryMapperTest@ShopCategoryMapperTest, testException = java.lang.AssertionError: expected:&lt;3&gt; but was:&lt;6&gt;, mergedContextConfiguration = [MergedContextConfiguration@27abb83e testClass = ShopCategoryMapperTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+</system-out>
+    <system-err>Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+</system-err>
+  </testcase>
+</testsuite>

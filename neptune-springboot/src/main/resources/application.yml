@@ -1,0 +1,8 @@
+# 取代配置文件
+spring:
+  datasource:
+    username: zCKAAEaFQUI=
+    password: QAHlVoUc49w=
+    url: jdbc:mysql://localhost:3306/o2o?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mchange.v2.c3p0.ComboPooledDataSource

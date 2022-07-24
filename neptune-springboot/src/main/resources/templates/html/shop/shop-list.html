@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商店列表</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/o2o/resources/css/common/sm.min.css">
+    <link rel="stylesheet" href="/o2o/resources/css/common/sm-extend.min.css">
+    <link rel="stylesheet" href="/o2o/resources/css/shop/list.css">
+</head>
+<body>
+<header class="bar bar-nav">
+    <h1 class="title">商店列表</h1>
+</header>
+<div class="content">
+    <div class="content-block">
+        <p>
+            欢迎回来,<span id="username"></span><a class="pull-right" href="/o2o/shop-admin/shop-edit">增加店铺</a>
+        </p>
+        <!-- 店铺列表头 -->
+        <div class="row row-shop"  id="head">
+            <div class="col-20">编号</div>
+            <div class="col-40">店铺名称</div>
+            <div class="col-20">店铺状态</div>
+            <div class="col-20">操作</div>
+        </div>
+        <!-- 店铺列表 -->
+        <div class="shop-wrap" id="body">
+
+        </div>
+    </div>
+    <!-- 相关操作 -->
+    <div class="content-block">
+        <div class="row">
+            <div class="col-33">
+                <a href="/o2o/local/bind?type=2" class="button button-big button-fill button-success">帐号绑定</a>
+            </div>
+            <div class="col-33">
+                <a href="#" id="log-out" usertype="2" class="button button-big button-fill button-danger">退出系统</a>
+            </div>
+            <div class="col-33">
+                <a href="/o2o/local/cp?type=2" class="button button-big button-fill button-success" id="bindOrChange">修改密码</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type='text/javascript' src='/o2o/resources/js/common/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='/o2o/resources/js/common/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='/o2o/resources/js/common/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='/o2o/resources/js/shop/list.js' charset='utf-8'></script>
+<script type='text/javascript' src='/o2o/resources/js/local/logout.js' charset='utf-8'></script>
+</body>
+</html>

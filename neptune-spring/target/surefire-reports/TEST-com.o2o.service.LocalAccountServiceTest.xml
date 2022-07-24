@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="4" failures="1" name="com.o2o.service.LocalAccountServiceTest" time="0.05" errors="1" skipped="0">
+  <properties>
+    <property name="idea.version" value="2022.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\bin"/>
+    <property name="java.vm.version" value="25.271-b09"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.runtime.version" value="1.8.0_271-b09"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="D:\cache\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="D:\jetbrain\idea\IntelliJ IDEA 2022.1\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\environment\jdk\jdk 1.8\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\environment\jdk\jdk-11.0.13_windows-x64_bin\jdk-11.0.13\bin;D:\vmware\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\PyCharm\python\Scripts\;D:\PyCharm\python\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\PyCharm\graphviz\bin;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;D:\environment\tomcat\apache-tomcat-9.0.40\bin;D:\mingw\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin;D:\environment\mysql\mysql-5.7.33-winx64\mysql-5.7.33-winx64\bin;C:\Program Files\Git\cmd;D:\前端\node.js;D:\前端\node.js\node-global;D:\pandoc\pandoc-2.11.3.2-windows-x86_64\pandoc-2.11.3.2;D:\远程访问工具\Xftp\;D:\远程访问工具\Xshell\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\environment\redis;D:\environment\golang;D:\environment\golang\bin;D:\environment\protoc-3.7.1-win64\bin;C:\Users\shenzhouhang\scoop\shims;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\Bandizip\;D:\IDEA\IntelliJ IDEA 2020.1.3\bin;D:\Rider\JetBrains Rider 2020.1.4\bin;D:\CLion\CLion 2020.2\bin;D:\mingw\x86_64-6.4.0-release-posix-seh-rt_v5-rev0\mingw64\bin;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\WebStorm\WebStorm 2021.1.1\bin;D:\vscode\Microsoft VS Code\bin;D:\jetbrain\idea\IntelliJ IDEA 2022.1\bin;C:\Users\shenzhouhang\AppData\Local\Programs\oh-my-posh\bin;D:\jetbrain\GoLand 2022.1.3\bin;."/>
+    <property name="maven.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\shenzhouhang"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="shenzhouhang"/>
+    <property name="java.class.path" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds-2.6.0.jar;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds.license;D:\jetbrain\idea\IntelliJ IDEA 2022.1\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\environment\jdk\jdk 1.8\jdk\jre"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.1 -s D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_271"/>
+    <property name="java.ext.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\resources.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\rt.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\sunrsasign.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jsse.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jce.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\charsets.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jfr.jar;D:\environment\jdk\jdk 1.8\jdk\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.o2o.service.LocalAccountServiceTest" name="updateLocalAccountServiceTest" time="0.013">
+    <error message="更新账号密码失败!" type="com.o2o.exception.LocalAccountException">com.o2o.exception.LocalAccountException: 更新账号密码失败!
+	at com.o2o.service.impl.LocalAccountServiceImpl.updateLocalAccount(LocalAccountServiceImpl.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy35.updateLocalAccount(Unknown Source)
+	at com.o2o.service.LocalAccountServiceTest.updateLocalAccountServiceTest(LocalAccountServiceTest.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+    <system-out>01:45:23.202 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@5c723f2d testClass = GoodsInfoServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.202 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 114, missCount = 1]
+01:45:23.202 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test class: context [DefaultTestContext@33ecbd6c testClass = GoodsInfoServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@5c723f2d testClass = GoodsInfoServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+01:45:23.203 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.o2o.service.LocalAccountServiceTest]
+01:45:23.203 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:45:23.203 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:45:23.204 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.o2o.service.LocalAccountServiceTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+01:45:23.204 [main] DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@7f1ef916 declaringClass = &apos;com.o2o.BaseTest&apos;, classes = &apos;{}&apos;, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+01:45:23.204 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [com.o2o.service.LocalAccountServiceTest]: using defaults.
+01:45:23.205 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:45:23.205 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1886991b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@64aad809, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1f03fba0, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@17dd671f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3bbf6abe, org.springframework.test.context.transaction.TransactionalTestExecutionListener@9679750, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@9b9a327, org.springframework.test.context.event.EventPublishingTestExecutionListener@75a0c890]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.205 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.206 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+01:45:23.206 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.206 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 115, missCount = 1]
+01:45:23.206 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.206 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.206 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@44065156, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]]].
+01:45:23.206 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.206 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 116, missCount = 1]
+01:45:23.207 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.207 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 117, missCount = 1]
+01:45:23.208 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@44065156, testMethod = updateLocalAccountServiceTest@LocalAccountServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+01:45:23.208 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.208 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 118, missCount = 1]
+01:45:23.208 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.208 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 119, missCount = 1]
+01:45:23.209 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.o2o.service.impl.LocalAccountServiceImpl.updateLocalAccount]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+01:45:23.210 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] for JDBC transaction
+01:45:23.210 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] to manual commit
+01:45:23.211 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+01:45:23.212 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ed0a8f]
+01:45:23.212 [main] DEBUG com.o2o.dao.split.DynamicDataSourceInterceptor - ���÷���[com.o2o.dao.LocalAccountMapper.updateLocalAccount], ���ʵ�����Դ[master], SQL ����[UPDATE]
+01:45:23.212 [main] DEBUG com.o2o.dao.split.DynamicDataSourceHolder - ���ʵ�����Դ����: master
+01:45:23.212 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] will be managed by Spring
+01:45:23.213 [main] DEBUG com.o2o.dao.LocalAccountMapper.updateLocalAccount - ==&gt;  Preparing: update o2o.tb_local_account SET password = ?, update_time = ? where user_id = ? and username = ? and password = ? 
+01:45:23.214 [main] DEBUG com.o2o.dao.LocalAccountMapper.updateLocalAccount - ==&gt; Parameters: 59s99bs556bb255by262e26s206e52bs(String), 2022-07-25 01:45:23.208(Timestamp), 2(Integer), 1234567(String), yesbq55y2205l9sb2ls5ey25l5eq629q(String)
+01:45:23.227 [main] DEBUG com.o2o.dao.LocalAccountMapper.updateLocalAccount - &lt;==    Updates: 0
+01:45:23.227 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ed0a8f]
+01:45:23.227 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ed0a8f]
+01:45:23.227 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44ed0a8f]
+01:45:23.227 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+01:45:23.227 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@43f9dd56 [wrapping: com.mysql.jdbc.JDBC4Connection@fd53053]]
+01:45:23.228 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@43f9dd56 [wrapping: com.mysql.jdbc.JDBC4Connection@fd53053]] after transaction
+01:45:23.228 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.228 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 120, missCount = 1]
+01:45:23.229 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.229 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 121, missCount = 1]
+01:45:23.229 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@44065156, testMethod = updateLocalAccountServiceTest@LocalAccountServiceTest, testException = com.o2o.exception.LocalAccountException: �����˺�����ʧ��!, mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+</system-out>
+  </testcase>
+  <testcase classname="com.o2o.service.LocalAccountServiceTest" name="registerLocalAccountServiceTest" time="0.009">
+    <failure message="expected:&lt;-7&gt; but was:&lt;1&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;-7&gt; but was:&lt;1&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.o2o.service.LocalAccountServiceTest.registerLocalAccountServiceTest(LocalAccountServiceTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>01:45:23.230 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.230 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.service.LocalAccountServiceTest]
+01:45:23.230 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@57cb70be, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]]].
+01:45:23.230 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.231 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 122, missCount = 1]
+01:45:23.231 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.231 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 123, missCount = 1]
+01:45:23.231 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@57cb70be, testMethod = registerLocalAccountServiceTest@LocalAccountServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+01:45:23.232 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.232 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 124, missCount = 1]
+01:45:23.232 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.232 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 125, missCount = 1]
+01:45:23.233 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.o2o.service.impl.LocalAccountServiceImpl.registerLocalAccount]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+01:45:23.233 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] for JDBC transaction
+01:45:23.233 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] to manual commit
+01:45:23.234 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+01:45:23.234 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20d87335]
+01:45:23.234 [main] DEBUG com.o2o.dao.split.DynamicDataSourceInterceptor - ���÷���[com.o2o.dao.LocalAccountMapper.findLocalAccountByUser], ���ʵ�����Դ[master], SQL ����[SELECT]
+01:45:23.234 [main] DEBUG com.o2o.dao.split.DynamicDataSourceHolder - ���ʵ�����Դ����: master
+01:45:23.234 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [Lazy Connection proxy for target DataSource [com.o2o.dao.split.DynamicDataSource@6594402a]] will be managed by Spring
+01:45:23.234 [main] DEBUG com.o2o.dao.LocalAccountMapper.findLocalAccountByUser - ==&gt;  Preparing: select * from o2o.tb_local_account where user_id = ?; 
+01:45:23.235 [main] DEBUG com.o2o.dao.LocalAccountMapper.findLocalAccountByUser - ==&gt; Parameters: 2(Integer)
+01:45:23.236 [main] DEBUG com.o2o.dao.LocalAccountMapper.findLocalAccountByUser - &lt;==      Total: 1
+01:45:23.236 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20d87335]
+01:45:23.236 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20d87335]
+01:45:23.236 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20d87335]
+01:45:23.236 [main] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20d87335]
+01:45:23.236 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction commit
+01:45:23.236 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Committing JDBC transaction on Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@22ebccb9 [wrapping: com.mysql.jdbc.JDBC4Connection@fd53053]]
+01:45:23.237 [main] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@22ebccb9 [wrapping: com.mysql.jdbc.JDBC4Connection@fd53053]] after transaction
+null
+01:45:23.238 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.238 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 126, missCount = 1]
+01:45:23.238 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:23.238 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 127, missCount = 1]
+01:45:23.239 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@358ab600 testClass = LocalAccountServiceTest, testInstance = com.o2o.service.LocalAccountServiceTest@57cb70be, testMethod = registerLocalAccountServiceTest@LocalAccountServiceTest, testException = java.lang.AssertionError: expected:&lt;-7&gt; but was:&lt;1&gt;, mergedContextConfiguration = [MergedContextConfiguration@e26af6 testClass = LocalAccountServiceTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+</system-out>
+  </testcase>
+  <testcase classname="com.o2o.service.LocalAccountServiceTest" name="findLocalAccountByUserServiceTest" time="0.014"/>
+  <testcase classname="com.o2o.service.LocalAccountServiceTest" name="loginByUsernameAndPasswordServiceTest" time="0.014"/>
+</testsuite>

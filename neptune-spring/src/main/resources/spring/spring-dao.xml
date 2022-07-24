@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 切记: 配置要是不成功, 千万不要心态爆炸 -->
+
+    <!--注: 不采用加密工具类加密的情况下, 就是直接引入数据库配置文件即可 -->
+    <!--<context:property-placeholder location="classpath:mybatis/database.properties"/>-->
+    <!--1. 引入加密工具类 -->
+    <bean class="com.o2o.utils.EncryptPropertyPlaceholderConfigure">
+        <!-- 配置解密文件 -->
+        <property name="locations">
+            <list>
+                <!-- 引入需要解密的数据库配置文件（MySQL、Redis） -->
+                <value>classpath:mybatis/database.properties</value>
+                <value>classpath:mybatis/redis.properties</value>
+            </list>
+        </property>
+        <!-- 配置解密格式 -->
+        <property name="fileEncoding" value="UTF-8"/>
+    </bean>
+
+    <!-- 2. 配置数据库连接池 -->
+    <!-- 注: destroy-method 属性: 表示对象在销毁的时候需要调用的方法 -->
+    <bean id="abstractDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <!-- 数据库连接池相关参数 -->
+        <!-- 2.1 数据库连接池最大连接数 -->
+        <property name="maxPoolSize" value="${mysql.pool.maxSize}"/>
+        <!-- 2.2 数据库连接池最少连接数 -->
+        <property name="minPoolSize" value="${mysql.pool.minSize}"/>
+        <!-- 2.3 连接关闭的时候, 所以未提交的事务全部回滚-->
+        <property name="autoCommitOnClose" value="${mysql.pool.autoCommitOnClose}"/>
+        <!-- 2.4 获取连接超时时间 -->
+        <property name="checkoutTimeout" value="${mysql.pool.checkoutTimeout}"/>
+        <!-- 2.5 连接获取失败重新尝试的次数 -->
+        <property name="acquireRetryAttempts" value="${mysql.pool.acquireRetryAttempts}"/>
+
+    </bean>
+    <!-- 3. 主从同步配置: 创建两个不同的数据源, 并且继承此前的数据源 -->
+    <!-- 3.1 主数据库对象 -->
+    <bean id="master" parent="abstractDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.master.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- 3.2 从数据库对象 -->
+    <bean id="slave" parent="abstractDataSource">
+        <!-- 数据库相关参数 -->
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.slave.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- 4. 动态数据源对象: 选择数据源对象 -->
+    <bean id="dynamicDataSource" class="com.o2o.dao.split.DynamicDataSource">
+        <!-- 4.1 DynamicDataSourceInterceptor 在 SQL 执行的时候判断应该访问的数据库, 然后选择在哪个数据库中执行 -->
+        <!-- 4.2 DynamicDataSourceInterceptor 选择执行的数据库之后, 会将 DynamicDataSourceHolder 中保存的 Key 值设置为相应的数据库 -->
+        <!-- 4.3 DynamicDataSource 继承 AbstractRoutingDataSource 重写获取 Key 值的方法 -->
+        <!-- 4.4 Map 对象实例 resolvedDataSources 会调用这个被重写的获取 Key 的方法, 获取到当前应该执行的数据库对应的数据源 -->
+        <!-- 注: resolvedDataSources 中的键值对是通过 targetDataSources 得到的, 所以我们在这里是配置的这个对象的属性 -->
+        <property name="targetDataSources">
+            <map>
+                <!--数据源对象本事是 master, 此前设置的 key 也叫 master -->
+                <entry value-ref="master" key="master"/>
+                <entry value-ref="slave" key="slave"/>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 5. 创建据源对象: SQL 语句对应的 Statement 对象被创建时才会真正去数据库连接 -->
+    <!--
+    1. Spring 有三种创建数据源的类: DriverManagerDataSource, SingleConnectionDataSource, LazyConnectionDataSourceProxy
+    1. DriverManagerDataSource, SingleConnectionDataSource 但是都没有办法直接配置一个数据源对象, 都是通过配置基本信息来创建的
+    2. LazyConnectionDataSourceProxy 是代理类所以可以直接配置
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+        <property name="targetDataSource" ref="dynamicDataSource"/>
+    </bean>
+
+    <!-- 6.配置 SqlSessionFactory 对象: 用于创建 SqlSession -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 整合 Mybatis 文件 -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!-- 启用别名机制 -->
+        <property name="typeAliasesPackage" value="com.o2o.entity"/>
+        <!-- 扫描 Mapper 文件 -->
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
+    </bean>
+
+    <!-- 7. 动态扫描: 动态实现持久层对应的接口, 然后接口对应的对象注入到容器中 -->
+    <bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.o2o.dao"/>
+    </bean>
+
+</beans>

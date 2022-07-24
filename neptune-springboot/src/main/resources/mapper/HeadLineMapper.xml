@@ -1,0 +1,35 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuyusakaiori.csms.dao.HeadLineMapper">
+
+    <resultMap id="headLineMap" type="headLine">
+        <id property="headlineId" column="head_line_id"/>
+        <result property="headlineName" column="head_line_name"/>
+        <result property="priority" column="head_line_priority"/>
+        <result property="link" column="head_line_link"/>
+        <result property="imageURL" column="head_line_img_url"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="findHeadLine" resultType="headLine" resultMap="headLineMap" parameterType="headLine">
+        select * from o2o.tb_head_line
+        <where>
+            <if test="condition != null">
+                <if test="condition.headlineName != null">
+                    and head_line_name like '%${condition.headlineName}%'
+                </if>
+                <if test="condition.status != null">
+                    and status = #{condition.status}
+                </if>
+            </if>
+        </where>
+        order by head_line_priority desc
+    </select>
+
+    <select id="findHeadLineById" resultType="headLine" resultMap="headLineMap" parameterType="_int">
+        select * from o2o.tb_head_line
+        where head_line_id = #{id}
+    </select>
+
+</mapper>

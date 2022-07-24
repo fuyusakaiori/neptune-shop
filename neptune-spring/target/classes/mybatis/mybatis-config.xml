@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybtis.org/dtd/mybatis-3-config.dtd">
+<!--configuration 核心配置文件-->
+<configuration>
+
+    <settings>
+        <!-- 支持自动生成主键, 需要数据库驱动支持: 默认值为 false, 如果设置为 true，将强制使用自动生成主键 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 允许使用别名机制替代列标签: 默认值为 true -->
+        <setting name="useColumnLabel" value="true"/>
+        <!-- 开启驼峰命名转换, create_time => creatTime: 默认值为 false -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!-- Mybatis 和 Spring 整合后大多数内容都在 Spring 中配置 -->
+
+    <!--配置拦截器 -->
+    <plugins>
+        <plugin interceptor="com.o2o.dao.split.DynamicDataSourceInterceptor"/>
+    </plugins>
+
+</configuration>

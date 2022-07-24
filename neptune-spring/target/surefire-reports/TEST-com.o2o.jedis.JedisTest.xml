@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="4" failures="0" name="com.o2o.jedis.JedisTest" time="13.237" errors="2" skipped="0">
+  <properties>
+    <property name="idea.version" value="2022.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\bin"/>
+    <property name="java.vm.version" value="25.271-b09"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\project\java\neptune-shop\neptune-spring"/>
+    <property name="java.runtime.version" value="1.8.0_271-b09"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="D:\cache\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="D:\jetbrain\idea\IntelliJ IDEA 2022.1\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\environment\jdk\jdk 1.8\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\environment\jdk\jdk-11.0.13_windows-x64_bin\jdk-11.0.13\bin;D:\vmware\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\PyCharm\python\Scripts\;D:\PyCharm\python\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\PyCharm\graphviz\bin;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;D:\environment\tomcat\apache-tomcat-9.0.40\bin;D:\mingw\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin;D:\environment\mysql\mysql-5.7.33-winx64\mysql-5.7.33-winx64\bin;C:\Program Files\Git\cmd;D:\前端\node.js;D:\前端\node.js\node-global;D:\pandoc\pandoc-2.11.3.2-windows-x86_64\pandoc-2.11.3.2;D:\远程访问工具\Xftp\;D:\远程访问工具\Xshell\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\environment\redis;D:\environment\golang;D:\environment\golang\bin;D:\environment\protoc-3.7.1-win64\bin;C:\Users\shenzhouhang\scoop\shims;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\Bandizip\;D:\IDEA\IntelliJ IDEA 2020.1.3\bin;D:\Rider\JetBrains Rider 2020.1.4\bin;D:\CLion\CLion 2020.2\bin;D:\mingw\x86_64-6.4.0-release-posix-seh-rt_v5-rev0\mingw64\bin;C:\Users\shenzhouhang\AppData\Local\Microsoft\WindowsApps;D:\WebStorm\WebStorm 2021.1.1\bin;D:\vscode\Microsoft VS Code\bin;D:\jetbrain\idea\IntelliJ IDEA 2022.1\bin;C:\Users\shenzhouhang\AppData\Local\Programs\oh-my-posh\bin;D:\jetbrain\GoLand 2022.1.3\bin;."/>
+    <property name="maven.conf" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\shenzhouhang"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="shenzhouhang"/>
+    <property name="java.class.path" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds-2.6.0.jar;D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\boot\plexus-classworlds.license;D:\jetbrain\idea\IntelliJ IDEA 2022.1\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\environment\jdk\jdk 1.8\jdk\jre"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.1 -s D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\maven-repo package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_271"/>
+    <property name="java.ext.dirs" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\environment\jdk\jdk 1.8\jdk\jre\lib\resources.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\rt.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\sunrsasign.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jsse.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jce.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\charsets.jar;D:\environment\jdk\jdk 1.8\jdk\jre\lib\jfr.jar;D:\environment\jdk\jdk 1.8\jdk\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\environment\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.o2o.jedis.JedisTest" name="lettuceBloomFilterTest" time="2.832">
+    <error message="Unable to connect to 47.101.45.234:6380" type="io.lettuce.core.RedisConnectionException">io.lettuce.core.RedisConnectionException: Unable to connect to 47.101.45.234:6380
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+	at io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:330)
+	at io.lettuce.core.RedisClient.connect(RedisClient.java:216)
+	at io.lettuce.core.RedisClient.connect(RedisClient.java:201)
+	at com.o2o.jedis.JedisTest.lettuceBloomFilterTest(JedisTest.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: java.lang.NoSuchMethodError: io.netty.util.NetUtil.createInetAddressFromIpAddressString(Ljava/lang/String;)Ljava/net/InetAddress;
+	at io.netty.resolver.dns.DnsNameResolver.doResolve(DnsNameResolver.java:959)
+	at io.netty.resolver.dns.DnsNameResolver.doResolve(DnsNameResolver.java:812)
+	at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:61)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:100)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:66)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:51)
+	at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:55)
+	at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:31)
+	at io.netty.resolver.AbstractAddressResolver.resolve(AbstractAddressResolver.java:106)
+	at io.netty.bootstrap.Bootstrap.doResolveAndConnect0(Bootstrap.java:206)
+	at io.netty.bootstrap.Bootstrap.access$000(Bootstrap.java:46)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:180)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:166)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:578)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:552)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:491)
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:616)
+	at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:605)
+	at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:104)
+	at io.netty.channel.DefaultChannelPromise.trySuccess(DefaultChannelPromise.java:84)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetSuccess(AbstractChannel.java:1008)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:516)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:429)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:486)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:503)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+</error>
+    <system-out>01:45:07.375 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.o2o.jedis.JedisTest]
+01:45:07.375 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:45:07.376 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:45:07.376 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.o2o.jedis.JedisTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+01:45:07.377 [main] DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@456be73c declaringClass = &apos;com.o2o.BaseTest&apos;, classes = &apos;{}&apos;, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+01:45:07.378 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.o2o.jedis.JedisTest]
+01:45:07.378 [main] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [com.o2o.jedis.JedisTest]: using defaults.
+01:45:07.378 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:45:07.379 [main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2375b321, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5baaae4c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b6e8f77, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@41a6d121, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4f449e8f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@411291e5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6e28bb87, org.springframework.test.context.event.EventPublishingTestExecutionListener@19f040ba]
+01:45:07.379 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:07.380 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:07.380 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:07.380 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:07.382 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:07.382 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:07.382 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:07.382 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:07.383 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+01:45:07.383 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.383 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 65, missCount = 1]
+01:45:07.383 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:07.383 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:07.384 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@c3c4c1c, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]]].
+01:45:07.386 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.387 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 66, missCount = 1]
+01:45:07.391 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.391 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 67, missCount = 1]
+01:45:07.393 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@c3c4c1c, testMethod = lettuceBloomFilterTest@JedisTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+01:45:07.393 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.394 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 68, missCount = 1]
+01:45:07.394 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:07.394 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 69, missCount = 1]
+01:45:07.505 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+01:45:07.565 [main] DEBUG io.lettuce.core.resource.AddressResolverGroupProvider - Starting with netty&apos;s non-blocking DNS resolver library
+01:45:07.602 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+01:45:07.602 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+01:45:08.689 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+01:45:08.713 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+01:45:08.713 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 8
+01:45:08.714 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+01:45:08.714 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+01:45:08.715 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+01:45:08.716 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: available
+01:45:08.716 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+01:45:08.716 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+01:45:08.716 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.&lt;init&gt;(long, int): available
+01:45:08.716 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+01:45:08.717 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: D:\cache (java.io.tmpdir)
+01:45:08.717 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+01:45:08.717 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+01:45:08.720 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: 3801088000 bytes
+01:45:08.720 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+01:45:08.721 [main] DEBUG io.netty.util.internal.CleanerJava6 - java.nio.ByteBuffer.cleaner(): available
+01:45:08.721 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+01:45:08.722 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+01:45:09.334 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+01:45:09.334 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+01:45:09.345 [main] DEBUG io.netty.resolver.DefaultHostsFileEntriesResolver - -Dio.netty.hostsFileRefreshInterval: 0
+01:45:09.366 [main] DEBUG io.netty.resolver.dns.DefaultDnsServerAddressStreamProvider - Default DNS servers: [/192.168.31.1:53] (sun.net.dns.ResolverConfiguration)
+01:45:09.371 [main] DEBUG io.lettuce.core.resource.KqueueProvider - Starting without optional kqueue library
+01:45:09.373 [main] DEBUG io.lettuce.core.resource.IOUringProvider - Starting without optional io_uring library
+01:45:09.374 [main] DEBUG io.lettuce.core.resource.EpollProvider - Starting without optional epoll library
+01:45:09.395 [main] DEBUG io.lettuce.core.resource.DefaultClientResources - -Dio.netty.eventLoopThreads: 8
+01:45:09.404 [main] DEBUG io.lettuce.core.resource.DefaultEventLoopGroupProvider - Creating executor io.netty.util.concurrent.DefaultEventExecutorGroup
+01:45:09.430 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+01:45:09.430 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+01:45:09.432 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@652ce654
+01:45:09.440 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+01:45:09.450 [main] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+01:45:09.454 [main] DEBUG io.lettuce.core.event.jfr.EventRecorderHolder - Starting without optional JFR support. JFR unavailable.
+01:45:09.479 [main] DEBUG io.lettuce.core.resource.DefaultClientResources - LatencyUtils/HdrUtils are not available, metrics are disabled
+01:45:09.485 [main] DEBUG io.lettuce.core.RedisClient - Trying to get a Redis connection for: redis://47.101.45.234:6380
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 11
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 16777216
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+01:45:09.637 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: true
+01:45:09.638 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+01:45:09.648 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+01:45:09.648 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+01:45:09.648 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+01:45:09.651 [main] DEBUG io.lettuce.core.resource.DefaultEventLoopGroupProvider - Allocating executor io.netty.channel.nio.NioEventLoopGroup
+01:45:09.651 [main] DEBUG io.lettuce.core.resource.DefaultEventLoopGroupProvider - Creating executor io.netty.channel.nio.NioEventLoopGroup
+01:45:09.651 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+01:45:09.657 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+01:45:09.657 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+01:45:09.674 [main] DEBUG io.lettuce.core.resource.DefaultEventLoopGroupProvider - Adding reference to io.netty.channel.nio.NioEventLoopGroup@2a32fb6, existing ref count 0
+01:45:09.683 [main] DEBUG io.lettuce.core.RedisClient - Resolved SocketAddress 47.101.45.234:6380 using redis://47.101.45.234:6380
+01:45:09.684 [main] DEBUG io.lettuce.core.AbstractRedisClient - Connecting to Redis at 47.101.45.234:6380
+01:45:09.689 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 31560 (auto-detected)
+01:45:10.284 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: 00:50:56:ff:fe:c0:00:08 (auto-detected)
+01:45:10.340 [lettuce-nioEventLoop-4-1] DEBUG io.lettuce.core.AbstractRedisClient - Connecting to Redis at 47.101.45.234:6380: 47.101.45.234:6380
+java.lang.NoSuchMethodError: io.netty.util.NetUtil.createInetAddressFromIpAddressString(Ljava/lang/String;)Ljava/net/InetAddress;
+	at io.netty.resolver.dns.DnsNameResolver.doResolve(DnsNameResolver.java:959)
+	at io.netty.resolver.dns.DnsNameResolver.doResolve(DnsNameResolver.java:812)
+	at io.netty.resolver.SimpleNameResolver.resolve(SimpleNameResolver.java:61)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:100)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:66)
+	at io.netty.resolver.dns.InflightNameResolver.resolve(InflightNameResolver.java:51)
+	at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:55)
+	at io.netty.resolver.InetSocketAddressResolver.doResolve(InetSocketAddressResolver.java:31)
+	at io.netty.resolver.AbstractAddressResolver.resolve(AbstractAddressResolver.java:106)
+	at io.netty.bootstrap.Bootstrap.doResolveAndConnect0(Bootstrap.java:206)
+	at io.netty.bootstrap.Bootstrap.access$000(Bootstrap.java:46)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:180)
+	at io.netty.bootstrap.Bootstrap$1.operationComplete(Bootstrap.java:166)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:578)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:552)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:491)
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:616)
+	at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:605)
+	at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:104)
+	at io.netty.channel.DefaultChannelPromise.trySuccess(DefaultChannelPromise.java:84)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetSuccess(AbstractChannel.java:1008)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:516)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:429)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:486)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:503)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+01:45:10.340 [lettuce-nioEventLoop-4-1] DEBUG io.lettuce.core.RedisChannelHandler - closeAsync()
+01:45:10.340 [lettuce-nioEventLoop-4-1] DEBUG io.lettuce.core.protocol.DefaultEndpoint - [unknown, epid=0x1] closeAsync()
+01:45:10.343 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.343 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 70, missCount = 1]
+01:45:10.343 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.343 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 71, missCount = 1]
+01:45:10.344 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@c3c4c1c, testMethod = lettuceBloomFilterTest@JedisTest, testException = io.lettuce.core.RedisConnectionException: Unable to connect to 47.101.45.234:6380, mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+</system-out>
+    <system-err>Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Jul 25 01:45:07 CST 2022 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+</system-err>
+  </testcase>
+  <testcase classname="com.o2o.jedis.JedisTest" name="jedisTest" time="0.002"/>
+  <testcase classname="com.o2o.jedis.JedisTest" name="guavaBloomFilterTest" time="0.065"/>
+  <testcase classname="com.o2o.jedis.JedisTest" name="redissonBloomFilterTest" time="10.338">
+    <error message="Unable to connect to Redis server: 47.101.45.234/47.101.45.234:6380" type="org.redisson.client.RedisConnectionException">org.redisson.client.RedisConnectionException: Unable to connect to Redis server: 47.101.45.234/47.101.45.234:6380
+	at org.redisson.connection.pool.ConnectionPool$1.lambda$run$0(ConnectionPool.java:153)
+	at java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:774)
+	at java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:750)
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:488)
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:1990)
+	at org.redisson.connection.pool.ConnectionPool.promiseFailure(ConnectionPool.java:310)
+	at org.redisson.connection.pool.ConnectionPool.lambda$createConnection$3(ConnectionPool.java:276)
+	at java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:774)
+	at java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:750)
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:488)
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:1990)
+	at org.redisson.client.RedisClient$1$2.run(RedisClient.java:235)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:503)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.util.concurrent.CompletionException: io.netty.channel.ConnectTimeoutException: connection timed out: 47.101.45.234/47.101.45.234:6380
+	at java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:326)
+	at java.util.concurrent.CompletableFuture.completeRelay(CompletableFuture.java:338)
+	at java.util.concurrent.CompletableFuture.uniRelay(CompletableFuture.java:925)
+	at java.util.concurrent.CompletableFuture$UniRelay.tryFire(CompletableFuture.java:913)
+	... 10 more
+Caused by: io.netty.channel.ConnectTimeoutException: connection timed out: 47.101.45.234/47.101.45.234:6380
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe$1.run(AbstractNioChannel.java:261)
+	at io.netty.util.concurrent.PromiseTask.runTask(PromiseTask.java:98)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:170)
+	... 7 more
+</error>
+    <system-out>01:45:10.415 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.o2o.jedis.JedisTest]
+01:45:10.415 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.o2o.jedis.JedisTest]
+01:45:10.416 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@5833f5cd, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]]].
+01:45:10.416 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.416 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 84, missCount = 1]
+01:45:10.416 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.416 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 85, missCount = 1]
+01:45:10.417 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@5833f5cd, testMethod = redissonBloomFilterTest@JedisTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+01:45:10.417 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.417 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 86, missCount = 1]
+01:45:10.417 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:10.417 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 87, missCount = 1]
+01:45:10.613 [main] INFO org.redisson.Version - Redisson 3.17.0
+01:45:10.696 [redisson-netty-5-2] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.696 [redisson-netty-5-9] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.697 [redisson-netty-5-3] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.696 [redisson-netty-5-8] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.696 [redisson-netty-5-6] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.697 [redisson-netty-5-11] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.698 [redisson-netty-5-4] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.699 [redisson-netty-5-7] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.700 [redisson-netty-5-12] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.701 [redisson-netty-5-10] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:10.704 [redisson-netty-5-5] DEBUG org.redisson.client.RedisConnection - Connection created [addr=redis://47.101.45.234:6380]
+01:45:20.752 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:20.752 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 88, missCount = 1]
+01:45:20.752 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [135184888] from cache with key [[MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]
+01:45:20.752 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@64b31700 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 89, missCount = 1]
+01:45:20.753 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@72ab05ed testClass = JedisTest, testInstance = com.o2o.jedis.JedisTest@5833f5cd, testMethod = redissonBloomFilterTest@JedisTest, testException = org.redisson.client.RedisConnectionException: Unable to connect to Redis server: 47.101.45.234/47.101.45.234:6380, mergedContextConfiguration = [MergedContextConfiguration@27e32fe4 testClass = JedisTest, locations = &apos;{classpath:spring/spring-dao.xml, classpath:spring/spring-service.xml, classpath:spring/spring-redis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, propertySourceLocations = &apos;{}&apos;, propertySourceProperties = &apos;{}&apos;, contextCustomizers = set[[empty]], contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]], attributes = map[&apos;org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents&apos; -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+</system-out>
+  </testcase>
+</testsuite>
