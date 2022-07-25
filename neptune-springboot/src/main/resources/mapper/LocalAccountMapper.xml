@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fuyusakaiori.csms.dao.LocalAccountMapper">
+<mapper namespace="com.neptune.shop.core.dao.LocalAccountMapper">
 
     <resultMap id="localMap" type="localAccount">
         <id column="local_id" property="localId"/>

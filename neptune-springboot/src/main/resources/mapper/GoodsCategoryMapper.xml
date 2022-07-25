@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fuyusakaiori.csms.dao.GoodsCategoryMapper">
+<mapper namespace="com.neptune.shop.core.dao.GoodsCategoryMapper">
 
     <resultMap id="categoryMap" type="goodsCategory">
         <id column="goods_category_id" property="goodsCategoryId"/>

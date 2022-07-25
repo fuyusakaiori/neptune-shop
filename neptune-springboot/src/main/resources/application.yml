@@ -1,8 +1,50 @@
-# 取代配置文件
+# 1. 指定服务器端口号
+server:
+  port: 2333
+  address: 127.0.0.1
 spring:
+  application:
+    name: neptune-shop
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 3MB
+  # 2. MySQL
   datasource:
-    username: zCKAAEaFQUI=
-    password: QAHlVoUc49w=
-    url: jdbc:mysql://localhost:3306/o2o?useUnicode=true&characterEncoding=utf8
+    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    url: jdbc:mysql://localhost:3306/o2o?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    hikari:
+      pool-name: NeptuneDataSourceHikari
+      username: zCKAAEaFQUI
+      password: QAHlVoUc49w=
+      maximum-pool-size: 10
+      max-lifetime: 600000
+      auto-commit: true
+      connection-timeout: 3000
+      connection-test-query: select 1
+  # 3. Redis: 分片模式
+  redis:
+    host: 42.192.84.87
+    cluster:
+      nodes:
+        - 42.192.84.87:7004
+        - 42.192.84.87:7005
+        - 42.192.84.87:7006
+        - 42.192.84.87:8004
+        - 42.192.84.87:8005
+        - 42.192.84.87:8006
+  # 4. Jackson
+  jackson:
+    default-property-inclusion: non_null
+
+mybatis:
+  type-aliases-package: com.neptune.shop
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+logging:
+  level:
+    com.neptune.shop: debug

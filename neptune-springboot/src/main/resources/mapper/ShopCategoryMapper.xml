@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fuyusakaiori.csms.dao.ShopCategoryMapper">
+<mapper namespace="com.neptune.shop.core.dao.ShopCategoryMapper">
     
     <!-- 字段名和属性名存在不一致的情况, 并且无法使用驼峰转换 -->
     <resultMap id="categoryMap" type="shopCategory">

@@ -1,7 +1,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fuyusakaiori.csms.dao.HeadLineMapper">
+<mapper namespace="com.neptune.shop.core.dao.HeadLineMapper">
 
     <resultMap id="headLineMap" type="headLine">
         <id property="headlineId" column="head_line_id"/>

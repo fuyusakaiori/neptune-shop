@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybtis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fuyusakaiori.csms.dao.ShopInfoMapper">
+<mapper namespace="com.neptune.shop.core.dao.ShopInfoMapper">
 
     <!-- 这里是不会开启驼峰转换的, 必须全部手写 -->
     <resultMap id="shopMap" type="shopInfo">
